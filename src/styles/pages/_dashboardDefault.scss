@@ -1,0 +1,84 @@
+.container-dashboard-default {
+  @extend %centerRows;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 30px;
+  background-color: $background-navigation-dashboard;
+  height: auto;
+}
+
+.container-main-default {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(2, 2fr);
+  background-color: $background-main-dashboard;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin: 10px 30px 100px 0px;
+  padding-left: 30px;
+  z-index: 2;
+}
+
+// dashboard navigation
+
+.container-dashboard {
+  background-color: $background-navigation-dashboard;
+  width: 300px;
+  height: 800px;
+  margin-top: 10px;
+  border-radius: 20px;
+  margin: 10px 30px 100px 30px;
+  @include boxShadowDashboardNav;
+
+  nav {
+    @extend %centerColumns;
+    align-items: flex-start;
+    margin-left: 50px;
+    padding-bottom: 10px;
+  }
+}
+
+.link-nav {
+  @extend %centerRows;
+  margin-bottom: 15px;
+  a {
+    padding-left: 10px;
+  }
+  &:hover {
+    color: black;
+  }
+}
+.active-link-nav-dashboard {
+  color: black;
+}
+
+.link-nav-dashboard {
+  &:hover {
+    color: black;
+  }
+}
+
+.title-header-dashboard {
+  text-align: center;
+  background-color: $background-navigation-dashboard;
+  padding-top: 10px;
+  padding-bottom: 35px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.header-dashboard {
+  background-color: $background-navigation-dashboard;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+  }
+}
+
+.legend-header-dashboard {
+  padding-left: 10px;
+  margin-bottom: 50px;
+}

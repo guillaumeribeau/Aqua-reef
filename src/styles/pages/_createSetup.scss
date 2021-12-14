@@ -1,0 +1,171 @@
+.section-card-equipement {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 150px;
+}
+
+.container_equipement_card {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.setup_tanks_forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white-color;
+  margin-left: 50px;
+  padding: 20px;
+  width: 300px;
+}
+
+.forms_equipement_btn {
+  @include btn;
+}
+
+.container-demo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+  height: 470px;
+  margin-right: 30px;
+}
+.demo-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  height: 470px;
+  border: dotted 2px $white-color;
+}
+
+.error_message_number {
+  color: red;
+}
+
+
+
+
+.section-budget-forms-setup {
+    @extend %centerRows;
+  }
+  
+  .section-budget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-size: 45px;
+      margin-right: 100px;
+    }
+  }
+  
+  .container-budget {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    background: $background-third;
+    padding: 15px;
+    border-radius: 10px;
+    margin-left: 100px;
+  }
+  
+  .container-forms-budget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+    label {
+      margin-bottom: 5px;
+      color: $black-color;
+    }
+    input {
+      margin-bottom: 5px;
+    }
+    button {
+      @include btn;
+      margin-bottom: 10px;
+    }
+  
+    span {
+      margin-bottom: 5px;
+      color: $black-color;
+      font-weight: 900;
+      font-size: 20px;
+    }
+  }
+  
+  .radar_score_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 263px;
+    border-radius: 5px;
+    background: $white-color;
+    box-shadow: 0px 2px 4px 0px #00000005;
+  
+    h2 {
+      position: absolute;
+      left: 30px;
+      top: 24px;
+      font-family: Roboto;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 0px;
+    }
+  }
+  
+
+
+
+.container_register_setup_forms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .register_setup_forms {
+    color: $black-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 450px;
+    background-color: $white-color;
+    padding: 15px;
+    border-radius: 10px;
+  
+    input {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: $white-color;
+    }
+  
+    textarea {
+      margin-bottom: 15px;
+      padding: 20px;
+      background-color: $white-color;
+    }
+    button {
+      @include btn;
+    }
+  }
+  
+  .forms-totalPrice {
+    font-size: 20px;
+    color: $primary-color;
+    margin-bottom: 15px;
+    span {
+      font-size: 24px;
+    }
+  }
+  

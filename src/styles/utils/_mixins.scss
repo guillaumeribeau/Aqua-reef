@@ -1,0 +1,39 @@
+@mixin btn {
+  background-image: linear-gradient(
+    to right,
+    #5c258d 0%,
+    #4389a2 51%,
+    #5c258d 100%
+  );
+
+  border-color: #5c258d;
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+@mixin boxshadow {
+  border-radius: 64px;
+  background: linear-gradient(145deg, #f9fdff, #d2d4d7);
+  box-shadow: 10px 10px 12px #cdd0d2, -10px -10px 12px #ffffff;
+}
+
+@mixin boxShadowDashboardNav {
+  border-radius: 64px;
+  background: linear-gradient(145deg, #b9c2ca, #9ca3aa);
+  box-shadow: 10px 10px 12px #989fa6, -10px -10px 12px #c2cbd4;
+}

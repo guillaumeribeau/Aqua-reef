@@ -1,0 +1,39 @@
+.header {
+  @extend %centerRows;
+  justify-content: space-between;
+  padding-right: 50px;
+
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  img {
+    height: 100px;
+    width: 100px;
+    margin-left: 50px;
+    border-radius: 50%;
+  }
+
+  nav {
+    @extend %centerRows;
+
+    a {
+      position: relative;
+      margin-right: 70px;
+      font-size: 22px;
+      display: inline;
+
+      &:hover::after {
+        transform: scale(1);
+      }
+
+      &::after {
+        display: block;
+        position: absolute;
+        content: "";
+        height: 3px;
+        width: 100%;
+        background: $white-color;
+        transform: scale(0);
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+  }
+}

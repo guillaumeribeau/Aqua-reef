@@ -1,0 +1,107 @@
+// contains all block for slider's measure
+.container-all-measure {
+  background-color: $white-color;
+  width: 600px;
+  height: auto;
+  padding: 15px;
+  color: $black-color;
+  border-radius: 20px;
+  margin: 20px 30px 0px 0px;
+  @extend %centerColumns;
+  @include boxshadow;
+  button {
+    @include btn;
+    margin-top: 20px;
+    padding: 15px 20px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+}
+
+.container-slider-measure {
+  @extend %centerRows;
+}
+
+// display in direct measure
+.container-display-measure-before-validation {
+  @extend %centerColumns;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-top: 15px;
+}
+.left-measure-before-validation {
+  @extend %centerRows;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.right-measure-before-validation {
+  @extend %centerRows;
+  justify-content: space-between;
+}
+
+.display-measure {
+  width: auto;
+  height: 25px;
+  border: solid 1px;
+  @extend %centerRows;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+// display a last measure
+.container-results-measure {
+  background-color: $white-color;
+  width: 350px;
+  height: auto;
+  margin-right: 200px;
+  padding: 15px;
+  color: $black-color;
+  border-radius: 20px;
+  margin: 20px 0px 0px 0px;
+  @include boxshadow;
+  h3 {
+    text-align: center;
+  }
+  h4 {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+}
+.first-measure {
+  margin-right: 70px;
+}
+
+.results-measure {
+  @extend %centerRows;
+}
+.container-icon-measure {
+  @extend %centerRows;
+  justify-content: flex-start;
+
+  span {
+    padding-left: 10px;
+  }
+}
+
+// graphique des mesures
+.container-graphique{
+  position: relative;
+@include boxshadow;
+padding: 25px;
+width: 600px;
+height: 300px;
+;
+margin-top: 30px;
+}
+
+
+.title-graphique{
+color: $black-color;
+font-size: medium;
+display: flex;
+margin-bottom: 10px;
+justify-content: center;
+}
