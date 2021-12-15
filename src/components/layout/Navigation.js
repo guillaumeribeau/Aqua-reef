@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logotemporaire.png";
-import UserMenu from "./users/UserMenu";
+import logo from "../../images/logotemporaire.png";
+import UserMenu from "../users/UserMenu";
 
 /**
  * header navigation

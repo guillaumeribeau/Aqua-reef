@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import aquariumExample from "../images/example_aqua.png";
+import aquariumExample from "../../images/example_aqua.png";
 import SetMealIcon from "@mui/icons-material/SetMeal";
 import InsightsIcon from "@mui/icons-material/Insights";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";

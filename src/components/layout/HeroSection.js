@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import heroImg from "../images/3redseatank.png";
-import Navigation from "./Navigation";
-import SectionSetup from "../pages/SetupRegister";
-import SetupCard from "./Setup/SetupCard";
+import heroImg from "../../images/3redseatank.png"
+import Navigation from "../layout/Navigation";
+import SectionSetup from "../../pages/SetupRegister";
+import SetupCard from "../Setup/SetupCard";
 import { Link } from "react-router-dom";
-import { UserContext} from "../context/UserContext"
+import { UserContext} from "../../context/UserContext"
 
 
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "./firebase/firebaseConfig";
+import { auth } from "../../firebase/firebaseConfig";
 /**
  * display Hero section
  * @components

@@ -13,7 +13,7 @@ import { UserContext} from "../../context/UserContext"
 
 import {signOut} from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
-import {auth} from "../firebase/firebaseConfig"
+import {auth} from "../../firebase/firebaseConfig"
 
 export default function UserMenu() {
   const [open, setOpen] = React.useState(false);

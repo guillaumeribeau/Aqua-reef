@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "../components/Navigation";
-import DashboardNavigation from "../dashboard/DashboardNavigation";
+import Navigation from "../components/layout/Navigation";
+import DashboardNavigation from "../components/dashboard/DashboardNavigation";
 
 /**
  * @component

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HeroSection from "../components/HeroSection";
+import HeroSection from "../components/layout/HeroSection";
 
 
 

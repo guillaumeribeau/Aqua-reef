@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { pushNewMeasure } from "../components/firebase/FunctionFirebase";
+
 import { tempColor, phColor,khColor,densityColor,NH4Color,NO2Color,NO3Color,PoColor,caColor,mgColor } from "./ConstantColors";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../components/firebase/firebaseConfig";
+import { db } from "../../firebase/firebaseConfig";
 
 /**
  * forms for user to register their measures
@@ -37,7 +37,7 @@ console.log(currentUser.uid);
 
  // essai de créer une collection user firestore:
  const registerNewMeasure= async()=>{
- const docRef = await addDoc(collection(db, "users", currentUser.uid,"setup"), {
+ const docRef = await addDoc(collection(db, "users", currentUser.uid,"measures"), {
     date,
     ph,
     kh,
@@ -51,7 +51,7 @@ console.log(currentUser.uid);
     Mg,
 
 });
-console.log(docRef);
+
 }
   // returns size of slider and color of label
   const customSlider = (color, backgroundLabel, ...width) => {

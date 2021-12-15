@@ -1,11 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { collection, addDoc,doc, setDoc} from "firebase/firestore"; 
-import { db } from "../firebase/firebaseConfig";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase/firebaseConfig";
+import { updateCurrentUser } from "firebase/auth";
 
 export default function SignUpModal() {
   const { modalState, toggleModals, signUp } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -38,31 +40,10 @@ export default function SignUpModal() {
         inputs.current[0].value,
         inputs.current[1].value
       );
-   // essai de créer une collection user firestore:
-   const docRef = await addDoc(collection(db, "users"), {
-    email: inputs.current[0].value
-  
-  });
-  console.log("Document written with ID: ", docRef.id);
 
-  const doc2Ref = await addDoc(collection(db, "users", docRef.id,"setup"), {
-  volume:'350l',
-  size:'120cm'
-  
-  });
-  console.log(doc2Ref);
-
-
-      formRef.current.reset();
-      setValidation("");
-      console.log(cred);
       toggleModals("close");
       navigate("/private/dashboard");
-
-   
-    } 
-  
-     catch (err) {
+    } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");
       }
@@ -77,6 +58,16 @@ export default function SignUpModal() {
     setValidation("");
     toggleModals("close");
   };
+  // essai de créer une collection user avec l'uid de l'authentifiaction
+  const createUserWithUid = async () => {
+    if (inputs.current[0] !== undefined) {
+      await setDoc(doc(db, "users", currentUser.uid), {
+        email: inputs.current[0].value,
+      });
+    }
+  };
+
+  createUserWithUid();
 
   return (
     <>
