@@ -19,11 +19,13 @@ import {
   doc,
   getDoc,
   getDocs,
+  limit,
   onSnapshot,
+  orderBy,
   query,
 } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebaseConfig";
-import { getDatabase, ref, child, get } from "firebase/database";
+
 import { UserContext } from "../../context/UserContext";
 import { SettingsBackupRestoreSharp } from "@mui/icons-material";
 
@@ -32,95 +34,95 @@ const LastMeasureResults = () => {
   const [lastMeasure, setLastMeasure] = useState([]);
 
   useEffect(() => {
-    onSnapshot(
-      collection(db, "users", currentUser.uid, "measures"),
-
-      (querySnapshot) => {
-        querySnapshot.forEach(async (doc) => {
-          
-          const allMeasure = [];
-          await allMeasure.push(doc.data());
-          console.log(allMeasure);
-          const measure = allMeasure[allMeasure.length - 1];
-          setLastMeasure(measure);
-        });
-      }
+    // select a collection
+    const collectionRef = collection(db, "users", currentUser.uid, "measures");
+    // filter method firebase
+    const q = query(collectionRef, orderBy("timestamp", "desc"), limit(1));
+    console.log(q);
+    const unsub = onSnapshot(q, (snapshot) =>
+      setLastMeasure(
+        snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      )
     );
 
-    console.log(lastMeasure);
+    return unsub;
   }, []);
 
   return (
-    <div className="container-results-measure">
-      <h3>Analyse du 15 sept 2021</h3>
-      <h4>Dernière analyse</h4>
-      <div className="results-measure">
-        <Stack
-          sx={{
-            marginRight: 10,
-          }}
-          direction="column"
-          divider={<Divider orientation="horizontal" flexItem />}
-          spacing={2}
-        >
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: tempColor }}>T</Avatar>
-            <span>{lastMeasure.temperature}°C</span>
-          </div>
+    <>
+      {lastMeasure[0] && (
+        <div className="container-results-measure">
+          <h3>Analyse du 15 sept 2021</h3>
+          <h4>Dernière analyse</h4>
+          <div className="results-measure">
+            <Stack
+              sx={{
+                marginRight: 10,
+              }}
+              direction="column"
+              divider={<Divider orientation="horizontal" flexItem />}
+              spacing={2}
+            >
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: tempColor }}>T</Avatar>
+                <span>{lastMeasure[0].temperature}°C</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: phColor }}>Ph</Avatar>
-            <span>{lastMeasure.ph}</span>
-          </div>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: phColor }}>Ph</Avatar>
+                <span>{lastMeasure[0].ph}</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: khColor }}>Kh</Avatar>
-            <span>{lastMeasure.kh}°dh</span>
-          </div>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: khColor }}>Kh</Avatar>
+                <span>{lastMeasure[0].kh}°dh</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: densityColor }}>D</Avatar>
-            <span>{lastMeasure.density}</span>
-          </div>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: densityColor }}>D</Avatar>
+                <span>{lastMeasure[0].density}</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: NH4Color }}>NH4</Avatar>
-            <span>{lastMeasure.NH4}mg/L</span>
-          </div>
-        </Stack>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: NH4Color }}>NH4</Avatar>
+                <span>{lastMeasure[0].NH4}mg/L</span>
+              </div>
+            </Stack>
 
-        <Stack
-          direction="column"
-          divider={<Divider orientation="horizontal" flexItem />}
-          spacing={2}
-        >
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: NO2Color }}>NO2</Avatar>
-            <span>{lastMeasure.NO2}mg/L</span>
-          </div>
+            <Stack
+              direction="column"
+              divider={<Divider orientation="horizontal" flexItem />}
+              spacing={2}
+            >
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: NO2Color }}>NO2</Avatar>
+                <span>{lastMeasure[0].NO2}mg/L</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: NO3Color }}>NO3</Avatar>
-            <span>{lastMeasure.NO3}mg/L</span>
-          </div>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: NO3Color }}>NO3</Avatar>
+                <span>{lastMeasure[0].NO3}mg/L</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: PoColor }}>Po</Avatar>
-            <span>{lastMeasure.Po}mg/L</span>
-          </div>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: PoColor }}>Po</Avatar>
+                <span>{lastMeasure[0].Po}mg/L</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: caColor }}>Ca</Avatar>
-            <span>{lastMeasure.Ca}mg/L</span>
-          </div>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: caColor }}>Ca</Avatar>
+                <span>{lastMeasure[0].Ca}mg/L</span>
+              </div>
 
-          <div className="container-icon-measure">
-            <Avatar sx={{ bgcolor: mgColor }}>Mg</Avatar>
-            <span>{lastMeasure.Mg}mg/L</span>
+              <div className="container-icon-measure">
+                <Avatar sx={{ bgcolor: mgColor }}>Mg</Avatar>
+                <span>{lastMeasure[0].Mg}mg/L</span>
+              </div>
+            </Stack>
           </div>
-        </Stack>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 

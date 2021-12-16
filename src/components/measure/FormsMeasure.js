@@ -4,7 +4,7 @@ import Slider from "@mui/material/Slider";
 
 import { tempColor, phColor,khColor,densityColor,NH4Color,NO2Color,NO3Color,PoColor,caColor,mgColor } from "./ConstantColors";
 import { UserContext } from "../../context/UserContext";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 
 /**
@@ -49,7 +49,7 @@ console.log(currentUser.uid);
     Po,
     Ca,
     Mg,
-
+ timestamp: serverTimestamp(),
 });
 
 }

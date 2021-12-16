@@ -10,7 +10,7 @@ const AnalyseWater = () => {
     <>
       <FormsMeasure />
        <LastMeasureResults />
-      {/* <LineBar />  */}
+      <LineBar /> 
     </>
   );
 };
