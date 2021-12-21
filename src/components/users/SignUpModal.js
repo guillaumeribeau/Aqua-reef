@@ -26,11 +26,11 @@ export default function SignUpModal() {
     e.preventDefault();
     // validation côté front
     if (
-      (inputs.current[1].value.length || inputs.current[2].value.length) < 6
+      (inputs.current[2].value.length || inputs.current[3].value.length) < 6
     ) {
       setValidation("6 characters min");
       return;
-    } else if (inputs.current[1].value !== inputs.current[2].value) {
+    } else if (inputs.current[2].value !== inputs.current[3].value) {
       setValidation("Passwords do not match");
       return;
     }
@@ -38,9 +38,9 @@ export default function SignUpModal() {
     try {
       const cred = await signUp(
         inputs.current[0].value,
-        inputs.current[1].value
+        inputs.current[2].value
       );
-
+       console.log(cred);
       toggleModals("close");
       navigate("/private/dashboard");
     } catch (err) {
@@ -63,6 +63,7 @@ export default function SignUpModal() {
     if (inputs.current[0] !== undefined) {
       await setDoc(doc(db, "users", currentUser.uid), {
         email: inputs.current[0].value,
+        pseudo: inputs.current[1].value,
       });
     }
   };
@@ -72,15 +73,9 @@ export default function SignUpModal() {
   return (
     <>
       {modalState.signUpModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
-          <div
-            onClick={closeModal}
-            className="w-100 h-100 bg-dark bg-opacity-75"
-          ></div>
-          <div
-            className="position-absolute top-50 start-50 translate-middle"
-            style={{ minWidth: "400px" }}
-          >
+        <div className="fixed-container-modals">
+          <div onClick={closeModal} className="container-modals"></div>
+          <div className="modals">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -94,9 +89,9 @@ export default function SignUpModal() {
                     onSubmit={handleForm}
                     className="sign-up-form"
                   >
-                    <div className="mb-3">
+                    <div className="container-label">
                       <label htmlFor="signUpEmail" className="form-label">
-                        Email adress
+                        Votre Mail
                       </label>
                       <input
                         ref={addInputs}
@@ -107,10 +102,23 @@ export default function SignUpModal() {
                         id="signUpEmail"
                       />
                     </div>
+                    <div className="container-label">
+                      <label htmlFor="signUpEmail" className="form-label">
+                        Votre Pseudo
+                      </label>
+                      <input
+                        ref={addInputs}
+                        name="email"
+                        required
+                        type="texte"
+                        className="form-control"
+                        id="signUpEmail"
+                      />
+                    </div>
 
-                    <div className="mb-3">
+                    <div className="container-label">
                       <label htmlFor="signUpPwd" className="form-label">
-                        Password
+                        Mot de passe
                       </label>
                       <input
                         ref={addInputs}
@@ -122,9 +130,9 @@ export default function SignUpModal() {
                       />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="container-label">
                       <label htmlFor="repeatPwd" className="form-label">
-                        Repeat Password
+                        Confirmer le mot de passe{" "}
                       </label>
                       <input
                         ref={addInputs}
@@ -134,10 +142,10 @@ export default function SignUpModal() {
                         className="form-control"
                         id="repeatPwd"
                       />
-                      <p className="text-danger mt-1">{validation}</p>
+                      <p className="text-danger">{validation}</p>
                     </div>
 
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn-modals">Submit</button>
                   </form>
                 </div>
               </div>

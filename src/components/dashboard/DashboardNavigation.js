@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import aquariumExample from "../../images/example_aqua.png";
 import SetMealIcon from "@mui/icons-material/SetMeal";
@@ -6,19 +6,26 @@ import InsightsIcon from "@mui/icons-material/Insights";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import SaveIcon from "@mui/icons-material/Save";
+import Addphoto from "./Addphoto";
 /**
  * dashboard naviagation
  * @components
  */
 
 const DashboardNavigation = () => {
+  const [urlPhoto, setUrlPhoto]=useState('')
+
+
+
+
   return (
     <div className="container-dashboard">
       <div className="title-header-dashboard">
         <h3>Bienvenue chez Aqua Reef Gest</h3>
       </div>
       <div className="header-dashboard">
-        <img src={aquariumExample} alt="logo de aqua gest reef" />
+        <img src={urlPhoto} alt="logo de aqua gest reef" />
+        <Addphoto urlPhoto={urlPhoto} setUrlPhoto={setUrlPhoto}/>
         <div className="legend-header-dashboard">
           <h3>
             Mon aquarium: <span>Red sea 350L</span>

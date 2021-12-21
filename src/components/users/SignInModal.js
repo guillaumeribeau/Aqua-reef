@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { UserContext} from "../../context/UserContext"
+import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function SignInModal() {
@@ -19,18 +19,16 @@ export default function SignInModal() {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    try {
-      await signIn(inputs.current[0].value, inputs.current[1].value);
-      // à tester
-      // formRef.current.reset();
-      setValidation("");
+    console.log(inputs.current[1].value);
+   console.log(inputs.current[0].value);
+    await signIn(inputs.current[0].value, inputs.current[1].value);
 
-      toggleModals("close");
-      navigate("/private/dashboard");
-    } catch {
-      setValidation("Wopsy, email and/or password incorrect");
-    }
+    setValidation("");
+  formRef.current.reset()
+    await toggleModals("close");
+    navigate("/private/dashboard");
+
+    //catch setValidation("Wopsy, email and/or password incorrect");
   };
 
   const closeModal = () => {
@@ -41,15 +39,9 @@ export default function SignInModal() {
   return (
     <>
       {modalState.signInModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
-          <div
-            onClick={closeModal}
-            className="w-100 h-100 bg-dark bg-opacity-75"
-          ></div>
-          <div
-            className="position-absolute top-50 start-50 translate-middle"
-            style={{ minWidth: "400px" }}
-          >
+        <div className="fixed-container-modals">
+          <div onClick={closeModal} className="container-modals"></div>
+          <div className="modals">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -63,9 +55,9 @@ export default function SignInModal() {
                     onSubmit={handleForm}
                     className="sign-up-form"
                   >
-                    <div className="mb-3">
+                    <div className="container-label">
                       <label htmlFor="signInEmail" className="form-label">
-                        Email adress
+                        Adresse Mail
                       </label>
                       <input
                         ref={addInputs}
@@ -77,9 +69,9 @@ export default function SignInModal() {
                       />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="container-label">
                       <label htmlFor="signInPwd" className="form-label">
-                        Password
+                        Mot de passe
                       </label>
                       <input
                         ref={addInputs}
@@ -89,10 +81,10 @@ export default function SignInModal() {
                         className="form-control"
                         id="signInPwd"
                       />
-                      <p className="text-danger mt-1">{validation}</p>
+                      <p className="text-danger">{validation}</p>
                     </div>
 
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn-modals">Submit</button>
                   </form>
                 </div>
               </div>

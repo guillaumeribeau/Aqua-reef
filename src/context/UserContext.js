@@ -13,8 +13,15 @@ export const UserContextProvider = ({ children }) => {
   const signUp = (email, pwd) =>
     createUserWithEmailAndPassword(auth, email, pwd);
 // s'identifier methode firebase 9
-const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
+const signIn = (email, pwd) =>{
+  signInWithEmailAndPassword(auth, email , pwd)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+   console.log(user);
+  })
 
+}
   const [currentUser, setCurrentUser] = useState(null);
   const [loadingData, setLoadingData] = useState(true);
 
@@ -59,7 +66,7 @@ const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
 
   return (
     <UserContext.Provider
-      value={{ modalState, toggleModals, currentUser, signUp,signIn }}
+      value={{ modalState, toggleModals, currentUser, signUp, signIn }}
     >
       {!loadingData && children}
     </UserContext.Provider>
