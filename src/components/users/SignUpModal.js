@@ -38,6 +38,7 @@ export default function SignUpModal() {
     try {
       const cred = await signUp(
         inputs.current[0].value,
+        inputs.current[1].value,
         inputs.current[2].value
       );
        console.log(cred);
@@ -59,16 +60,16 @@ export default function SignUpModal() {
     toggleModals("close");
   };
   // essai de créer une collection user avec l'uid de l'authentifiaction
-  const createUserWithUid = async () => {
-    if (inputs.current[0] !== undefined) {
-      await setDoc(doc(db, "users", currentUser.uid), {
-        email: inputs.current[0].value,
-        pseudo: inputs.current[1].value,
-      });
-    }
-  };
+  // const createUserWithUid = async () => {
+  //   if (currentUser && inputs.current[0].value !== undefined) {
+  //     await setDoc(doc(db, "users", currentUser.uid), {
+  //       email: inputs.current[0].value,
+  //       pseudo: inputs.current[1].value,
+  //     });
+  //   }
+  // };
 
-  createUserWithUid();
+  // createUserWithUid();
 
   return (
     <>

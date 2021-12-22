@@ -9,28 +9,33 @@ import { addDoc, collection, doc, FieldValue, setDoc, } from 'firebase/firestore
 
 
 
-const Addphoto = ({urlPhoto,setUrlPhoto}) => {
+const Addphoto = () => {
 const [file,setFile]= useState(null)
 const {currentUser}= useContext(UserContext)
+
 
 const onFileChange = (e) => {
     e.preventDefault()
  setFile(e.target.files[0])   
     
 }
+
+
 const onUpload =async () => {
    const storageRef= ref(storage, `/${currentUser.uid}/images/aquarium/${file.name}`)
    console.log(storageRef);
   await uploadBytes(storageRef, file)
   // permet de stocker url dans firestore 
-const url= getDownloadURL(storageRef).then((url)=>{
+getDownloadURL(storageRef).then((url)=>{
+   
 
- setDoc(doc(db, "users", currentUser.uid,"photo-aqua","photo-principal"),
+
+ setDoc(doc(db, "users", currentUser.uid,"aquarium","main-photo"),
   {
       url:url
   })
 
-    setUrlPhoto(url)
+   
 })
 
   
@@ -38,7 +43,7 @@ const url= getDownloadURL(storageRef).then((url)=>{
 }
     return (
         <div>
-            <input type="file" onChange={onFileChange}/>
+            <input type="file" accept=".png, .jpg, .jpeg" onChange={onFileChange}/>
             <button onClick={onUpload}>Charger image</button>
             <span>{file && file.name}</span>
            

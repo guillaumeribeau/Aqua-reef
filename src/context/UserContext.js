@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -10,8 +11,17 @@ export const UserContext = React.createContext();
 
 export const UserContextProvider = ({ children }) => {
   // s'inscrire méhode firebase 9
-  const signUp = (email, pwd) =>
-    createUserWithEmailAndPassword(auth, email, pwd);
+  const signUp = async (email,pseudo, pwd) =>{
+    try{
+ await createUserWithEmailAndPassword(auth, email, pwd).catch((err)=> console.log(err));
+
+    
+   await updateProfile(auth.currentUser, {displayName:pseudo}).catch((err)=>console.log(err));
+    }catch(err){
+      console.log(err);
+
+    }
+}  
 // s'identifier methode firebase 9
 const signIn = (email, pwd) =>{
   signInWithEmailAndPassword(auth, email , pwd)

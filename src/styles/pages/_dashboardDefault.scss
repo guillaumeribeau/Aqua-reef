@@ -79,6 +79,7 @@
 }
 
 .legend-header-dashboard {
+  @extend %centerRows;
   padding-left: 10px;
   margin-bottom: 50px;
 }

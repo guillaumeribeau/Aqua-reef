@@ -43,6 +43,13 @@ const HeroSection = () => {
           >
             Se connecter
           </Link>
+          <Link
+           
+            className="btn-home"
+            to="/private/dashboard"
+          >
+            dashboard
+          </Link>
         </div>
         <div className="container-title-img">
           <div className="hero-img">

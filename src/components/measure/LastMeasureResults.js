@@ -52,8 +52,8 @@ const LastMeasureResults = () => {
     <>
       {lastMeasure[0] && (
         <div className="container-results-measure">
-          <h3>Analyse du 15 sept 2021</h3>
-          <h4>Dernière analyse</h4>
+          <h3>Dernière analyse</h3>
+          <h4>{lastMeasure[0].date}</h4>
           <div className="results-measure">
             <Stack
               sx={{

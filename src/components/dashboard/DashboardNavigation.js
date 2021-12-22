@@ -1,35 +1,110 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import aquariumExample from "../../images/example_aqua.png";
 import SetMealIcon from "@mui/icons-material/SetMeal";
 import InsightsIcon from "@mui/icons-material/Insights";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import SaveIcon from "@mui/icons-material/Save";
+import EditIcon from "@mui/icons-material/Edit";
+import CheckIcon from "@mui/icons-material/Check";
 import Addphoto from "./Addphoto";
+import { UserContext } from "../../context/UserContext";
+import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebaseConfig";
 /**
  * dashboard naviagation
  * @components
  */
 
 const DashboardNavigation = () => {
-  const [urlPhoto, setUrlPhoto]=useState('')
+  const [mainPhoto, setmainPhoto] = useState("");
+  const { currentUser } = useContext(UserContext);
+
+  const [titleAqua, setTitleAqua] = useState(false);
+  const [editToggle, setEditToggle] = useState(false);
+  const inputNameAqua = useRef();
+
+  const toggle = () => {
+    setEditToggle(!editToggle);
+  };
+
+  // useEffect for Main picture
+  useEffect(() => {
+    // select a document for picture aquarium
+    const collectionRef = doc(
+      db,
+      "users",
+      currentUser.uid,
+      "aquarium",
+      "main-photo"
+    );
+    
+    //onsnapshot method firebase
+
+    const unsub = onSnapshot(collectionRef, (doc) => {
+      if (doc.data()) {
+        setmainPhoto(doc.data().url);
+      }
+    });
+   
+
+    return unsub;
+  }, []);
+
+  useEffect(() => {
+    // select a document for picture aquarium
+    const collectionRef = doc(
+      db,
+      "users",
+      currentUser.uid,
+      "aquarium",
+      "main-title"
+    );
+    
+    //onsnapshot method firebase
+
+    const unsub = onSnapshot(collectionRef, (doc) => {
+      if (doc.data()) {
+        setTitleAqua(doc.data().title);
+      }
+    });
+   
+
+    return unsub;
+  }, []);
 
 
-
+  const registerNameAqua = (e) => {
+    e.preventDefault();
+const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
+    setDoc(titleRef, {title:inputNameAqua.current.value},
+    );
+    setEditToggle(false)
+  };
 
   return (
     <div className="container-dashboard">
       <div className="title-header-dashboard">
-        <h3>Bienvenue chez Aqua Reef Gest</h3>
+        <h3>Bienvenue {currentUser.displayName}</h3>
       </div>
       <div className="header-dashboard">
-        <img src={urlPhoto} alt="logo de aqua gest reef" />
-        <Addphoto urlPhoto={urlPhoto} setUrlPhoto={setUrlPhoto}/>
+        <img src={mainPhoto} alt="logo de aqua gest reef" />
+        <Addphoto />
         <div className="legend-header-dashboard">
-          <h3>
-            Mon aquarium: <span>Red sea 350L</span>
-          </h3>
+          {editToggle ? (
+            <>
+              <input type="text" ref={inputNameAqua} />
+              <CheckIcon onClick={registerNameAqua} sx={{cursor:'pointer'}} />
+              
+            </>
+          ) : (
+            <>
+              
+               {titleAqua ? (<h3>{titleAqua}</h3>):(<h3>Nom de votre aquarium</h3>)}
+              
+              <EditIcon onClick={toggle} sx={{cursor:'pointer'}} />
+            </>
+          )}
         </div>
       </div>
 
