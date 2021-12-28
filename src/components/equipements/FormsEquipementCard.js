@@ -10,9 +10,7 @@ import Input from "@mui/material/Input";
 import Select from "@mui/material/Select";
 import { TextareaAutosize } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-// import firebase from "../utils/firebaseConfig";
-// import ConfigSetupCard from "./EquipementCard";
-import { pushcardEquipementInDb } from "../firebase/FunctionFirebase";
+
 
 
 /**
@@ -39,7 +37,7 @@ export default function FormsEquipementCard() {
     verifyNumber();
     const verifyIfPriceNumber = isNaN(price);
     if (verifyIfPriceNumber === false) {
-      pushcardEquipementInDb(name, price, category, description, picture);
+     // pushcardEquipementInDb(name, price, category, description, picture);
     }
   };
 

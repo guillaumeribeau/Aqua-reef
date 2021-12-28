@@ -8,7 +8,8 @@ import AnalyseWater from "./pages/AnalyseWater";
 import CreateSetup from "./pages/CreateSetup";
 import DashboardDefault from "./pages/DashboardDefault";
 import Private from "./components/users/Privates";
-
+import FormsEquipementCard from "./components/equipements/FormsEquipementCard";
+import NewProjectAqua from "./components/NewProjectAqua"
 function App() {
   return (
     <>
@@ -31,7 +32,7 @@ function App() {
         />
         <Route
           path="/private/createSetup"
-          element={<DashboardDefault childrenCards={<CreateSetup />} />}
+          element={<DashboardDefault childrenCards={<NewProjectAqua/>} />}
         />
         <Route
           path="/private/analyse"
