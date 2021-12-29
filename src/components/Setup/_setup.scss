@@ -1,3 +1,20 @@
+.all-container-setup{
+    @extend %centerColumns;
+
+}
+
+
+
+.setup-register-container{
+    @extend %centerRows;
+margin-bottom: 250px;
+}
+
+.container-display-one-setup{
+    @extend %centerRows;
+
+
+}
 .container-setup-card {
     @extend %centerColumns;
     border-radius: 59px;
@@ -21,4 +38,19 @@ justify-content: space-between;
       color: $black-color;
   }
 
+}
+
+.container-display-one-setup{
+@extend %centerRows;
+justify-content: space-between; 
+flex-wrap: wrap;
+
+}
+
+.image-equipement{
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
 }

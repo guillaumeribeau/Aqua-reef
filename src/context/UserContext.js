@@ -28,14 +28,14 @@ const signIn = (email, pwd) =>{
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-   console.log(user);
+  
   })
 
 }
   const [currentUser, setCurrentUser] = useState(null);
   const [loadingData, setLoadingData] = useState(true);
 
-  console.log("MAJ", currentUser);
+  
   useEffect(() => {
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
