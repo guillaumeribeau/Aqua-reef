@@ -1,3 +1,8 @@
+.analyse-water-container{
+@extend %centerRows;
+flex-wrap: wrap;
+}
+
 // contains all block for slider's measure
 .container-all-measure {
   background-color: $white-color;

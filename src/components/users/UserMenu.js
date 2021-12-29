@@ -7,7 +7,7 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
-import SectionSetup from "../../pages/SetupRegister";
+
 import { Link } from "react-router-dom";
 import { UserContext} from "../../context/UserContext"
 

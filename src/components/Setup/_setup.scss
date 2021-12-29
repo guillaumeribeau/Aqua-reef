@@ -1,0 +1,24 @@
+.container-setup-card {
+    @extend %centerColumns;
+    border-radius: 59px;
+    background: #ccd5f4;
+    box-shadow:  5px 5px 10px #c6cfed,
+                 -5px -5px 10px #d2dbfb;
+    width: 200px;
+    height:200px;
+    cursor: pointer;
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+.header-setup-card {
+@extend %centerRows;
+justify-content: space-between;
+
+  span {
+      color: $black-color;
+  }
+
+}

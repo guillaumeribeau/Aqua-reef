@@ -150,7 +150,7 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
           <Link
             className="link-nav-dashboard"
             activeClassName="active-link-nav-dashboard"
-            to="/setupRegister"
+            to="/private/setupRegister"
           >
             Mes Setups Enregistrer
           </Link>

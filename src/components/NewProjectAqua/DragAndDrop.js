@@ -1,55 +1,15 @@
-import React, { useState } from "react";
-import aquarium from "../../images/aquariumsetup.png";
-import doseuse from "../../images/doseuse.png";
-import brassage from "../../images/brassage.png";
-import ecumeur from "../../images/ecumeur.png";
-import eclairage from "../../images/eclairage.png";
-import remonte from "../../images/remonte.png";
-import ImageEquipements from "./ImageEquipements";
+import React, { useContext, useState } from "react";
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDrop } from "react-dnd";
-
-const listOfImageEquipements = [
-  {
-    title: "Aquarium",
-    id: 1,
-    src: aquarium,
-    alt: "example aquarium",
-  },
-  {
-    title: "Pompe doseuse",
-    id: 2,
-    src: doseuse,
-    alt: "exemple pompe doseuse",
-  },
-  {
-    title: "Pompe de brassage",
-    id: 3,
-    src: brassage,
-    alt: "exemple pompe de brassage",
-  },
-  {
-    title: "Ecumeurs",
-    id: 4,
-    src: ecumeur,
-    alt: "exemple ecumeur",
-  },
-  {
-    title: "Rampe Led",
-    id: 5,
-    src: eclairage,
-    alt: "exemple rampe led",
-  },
-  {
-    title: "Pompe de remontées",
-    id: 6,
-    src: remonte,
-    alt: "exemple pompe de remontées",
-  },
-];
+import { listOfImageEquipements } from "./DataEquipements";
+import ImageEquipements from "./ImageEquipements";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../../firebase/firebaseConfig";
+import { UserContext } from "../../context/UserContext";
 
 const DragAndDrop = () => {
+  const {currentUser}=useContext(UserContext)
   const [aquaBoard,setAquaBoard] = useState([]);
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "div",
@@ -65,6 +25,18 @@ const DragAndDrop = () => {
     );
     setAquaBoard((board) => [...board, pictureList[0]]);
   };
+
+  // register setupt in firebase
+
+  const registerSetup = async (params) => {
+   
+      const docRef = await addDoc(collection(db, "users", currentUser.uid,"setup"), {
+     aquaBoard,
+      timestamp: serverTimestamp(),
+     });
+setAquaBoard([])
+    
+  }
   return (
     <>
       <div className="container-drag-drop-board">
@@ -105,6 +77,7 @@ const DragAndDrop = () => {
             );
           })}
         </div>
+        <button onClick={registerSetup} className="btn-register-setup">Enregistrer mon setup</button>
       </div>
     </>
   );

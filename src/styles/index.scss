@@ -2,12 +2,12 @@
 @import "./utils/generalSettings";
 @import "./utils/mixins";
 @import "./utils/placeHolder";
-@import "./components/heroSection";
-@import "./components/sign";
-@import "./components/navigation";
+@import "../components/layout/heroSection";
+@import "../components/users/sign";
+@import "../components/layout/navigation";
 @import "../components/NewProjectAqua/newProjectAqua";
 @import "./pages/setupRegister";
 @import "./pages/home";
-@import "./pages/createSetup";
+@import "../components/Setup/setup";
 @import "./pages/analyseWater";
 @import "./pages/dashboardDefault";
