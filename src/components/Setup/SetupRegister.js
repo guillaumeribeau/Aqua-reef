@@ -11,7 +11,7 @@ import { db } from "../../firebase/firebaseConfig";
 import DisplaySetupOpen from "./DisplaySetupOpen";
 import SetupCard from "./SetupCard";
 
-const SetupRegister = ({ openSetup, setOpenSetup,displaySetupSelected }) => {
+const SetupRegister = ({ openSetup, setOpenSetup,setOneFilter,oneFilter}) => {
   const { currentUser } = useContext(UserContext);
   const [setupRegister, setsetupRegister] = useState([]);
 
@@ -33,13 +33,13 @@ const SetupRegister = ({ openSetup, setOpenSetup,displaySetupSelected }) => {
     return unsub;
   }, []);
 
-    
+
 
   return (
     <div className="setup-register-container">
       {setupRegister &&
         setupRegister.map((setup) => {
-          console.log(setup.id);
+         
           return (
             <SetupCard
               key={setup.id}
@@ -47,6 +47,9 @@ const SetupRegister = ({ openSetup, setOpenSetup,displaySetupSelected }) => {
               setup={setup}
               openSetup={openSetup} 
               setOpenSetup={setOpenSetup}
+              oneFilter={oneFilter}
+              setOneFilter={setOneFilter}
+             
             />
           );
         })}

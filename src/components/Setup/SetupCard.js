@@ -10,18 +10,18 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState,displaySetupSelected } from "react";
 import { UserContext } from "../../context/UserContext";
 import { db } from "../../firebase/firebaseConfig";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const SetupCard = ({ openSetup, setOpenSetup,setup}) => {
+const SetupCard = ({ openSetup, setOpenSetup,setup, oneFilter, setOneFilter}) => {
  
   const { currentUser } = useContext(UserContext);
 
 const displaySetupSelected = () => {
-setOpenSetup(openSetup.filter((el)=> el.id === setup.id))
-  
+  const oneSetup= openSetup.filter((el)=> el.id === setup.id)
+setOneFilter(oneSetup)
 }
 
  
