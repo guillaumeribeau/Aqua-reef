@@ -19,9 +19,6 @@ const DisplaySetupOpen = ({title, src,alt}) => {
       <div className="image-equipement">
         <div className="container-delete">
           <span>{title}</span>
-          <DeleteIcon
-            sx={{ fontSize: "25px", color: "black", cursor: "pointer" }}
-          />
         </div>
         <img src={src} alt={alt} />
       </div>

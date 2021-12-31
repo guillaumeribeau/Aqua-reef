@@ -61,6 +61,18 @@
   margin-bottom: 50px;
 }
 
+.container-input-equipement{
+@extend %centerRows;
+justify-content:space-between;
+
+input{
+  width: 80px;
+}
+
+}
+
+
+
 .btn-register-setup{
   @include btn;
   margin-bottom: 50px;

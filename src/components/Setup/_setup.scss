@@ -1,29 +1,27 @@
-.all-container-setup{
-    @extend %centerColumns;
-
+.all-container-setup {
+  @extend %centerColumns;
 }
 
+.setup-register-container {
 
-
-.setup-register-container{
-    @extend %centerRows;
-margin-bottom: 250px;
+  margin-bottom: 100px;
+}
+.setup-register {
+  @extend %centerRows;
+  margin-bottom: 50px;
 }
 
-.container-display-one-setup{
-    @extend %centerRows;
-
-
+.container-display-one-setup {
+  @extend %centerRows;
 }
 .container-setup-card {
-    @extend %centerColumns;
-    border-radius: 59px;
-    background: #ccd5f4;
-    box-shadow:  5px 5px 10px #c6cfed,
-                 -5px -5px 10px #d2dbfb;
-    width: 200px;
-    height:200px;
-    cursor: pointer;
+  @extend %centerColumns;
+  border-radius: 59px;
+  background: #ccd5f4;
+  box-shadow: 5px 5px 10px #c6cfed, -5px -5px 10px #d2dbfb;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
   img {
     width: 100px;
     height: 100px;
@@ -31,31 +29,30 @@ margin-bottom: 250px;
   }
 }
 .header-setup-card {
-@extend %centerRows;
-justify-content: space-between;
+  @extend %centerRows;
+  justify-content: space-between;
 
   span {
-      color: $black-color;
+    color: $black-color;
   }
+}
+
+.container-display-one-setup {
+  @extend %centerRows;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.container-btn{
+  @extend %centerRows;
+}
+
+.btn-close-setup {
+  @include btn;
 
 }
 
-.container-display-one-setup{
-@extend %centerRows;
-justify-content: space-between; 
-flex-wrap: wrap;
-
-
-}
-.btn-close-setup{
-
- @include btn;
-
-}
-
-
-
-.image-equipement{
+.image-equipement {
   img {
     width: 100px;
     height: 100px;

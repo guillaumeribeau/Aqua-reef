@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDrop } from "react-dnd";
 import { listOfImageEquipements } from "./DataEquipements";
@@ -9,8 +9,11 @@ import { db } from "../../firebase/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
 
 const DragAndDrop = () => {
-  const {currentUser}=useContext(UserContext)
-  const [aquaBoard,setAquaBoard] = useState([]);
+  const { currentUser } = useContext(UserContext);
+  const [nameEquipement, setNameEquipement] = useState("");
+  const [priceEquipement, setPriceEquipement] = useState("");
+  const [aquaBoard, setAquaBoard] = useState([]);
+
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "div",
     drop: (item) => addImageToAquaBoard(item.id), // on recupère l'id dragger
@@ -26,17 +29,18 @@ const DragAndDrop = () => {
     setAquaBoard((board) => [...board, pictureList[0]]);
   };
 
-  // register setupt in firebase
+  // register setup in firebase
 
-  const registerSetup = async (params) => {
-   
-      const docRef = await addDoc(collection(db, "users", currentUser.uid,"setup"), {
-     aquaBoard,
-      timestamp: serverTimestamp(),
-     });
-setAquaBoard([])
-    
-  }
+  const registerSetup = async () => {
+    const docRef = await addDoc(
+      collection(db, "users", currentUser.uid, "setup"),
+      {
+        aquaBoard,
+        timestamp: serverTimestamp(),
+      }
+    );
+    setAquaBoard([]);
+  };
   return (
     <>
       <div className="container-drag-drop-board">
@@ -55,12 +59,15 @@ setAquaBoard([])
           })}
         </div>
         <div className="instruction">
-    
-  <span><strong>Glissez/Déposez</strong> un équipement pour créer votre aquarium</span>
-  <KeyboardDoubleArrowDownIcon sx={{fontSize:'145px', color:'black'}}/>
+          <span>
+            <strong>Glissez/Déposez</strong> un équipement pour créer votre
+            aquarium
+          </span>
+          <KeyboardDoubleArrowDownIcon
+            sx={{ fontSize: "145px", color: "black" }}
+          />
         </div>
         <div className="aqua-project-board" ref={drop}>
-        
           {aquaBoard.map((picture) => {
             return (
               <ImageEquipements
@@ -71,13 +78,19 @@ setAquaBoard([])
                 title={picture.title}
                 IconDelete={true}
                 aquaBoard={aquaBoard}
-                setAquaBoard={setAquaBoard}  
+                setAquaBoard={setAquaBoard}
                 picture={picture}
+                nameEquipement={nameEquipement}
+                priceEquipement={priceEquipement}
+                setNameEquipement={setNameEquipement}
+                setPriceEquipement={setPriceEquipement}
               />
             );
           })}
         </div>
-        <button onClick={registerSetup} className="btn-register-setup">Enregistrer mon setup</button>
+        <button onClick={registerSetup} className="btn-register-setup">
+          Enregistrer mon setup
+        </button>
       </div>
     </>
   );

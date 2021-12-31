@@ -34,9 +34,13 @@ const SetupRegister = ({ openSetup, setOpenSetup,setOneFilter,oneFilter}) => {
   }, []);
 
 
-
+  const closeSetup = () => {
+    setOneFilter([]);
+  };
+ 
   return (
-    <div className="setup-register-container">
+   <div className="setup-register-container">
+    <div className="setup-register">
       {setupRegister &&
         setupRegister.map((setup) => {
          
@@ -49,11 +53,22 @@ const SetupRegister = ({ openSetup, setOpenSetup,setOneFilter,oneFilter}) => {
               setOpenSetup={setOpenSetup}
               oneFilter={oneFilter}
               setOneFilter={setOneFilter}
+            
              
             />
           );
         })}
-    </div>
+        
+    </div>   
+    <div className="container-btn">
+    {oneFilter.length === 1 && (
+          <button className="btn-close-setup" onClick={closeSetup}>
+            Fermer le setup
+          </button>
+        )}
+   </div>
+      </div>        
+          
   );
 };
 

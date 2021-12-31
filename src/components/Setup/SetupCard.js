@@ -9,33 +9,41 @@ import {
   onSnapshot,
   orderBy,
   query,
+  deleteDoc,
 } from "firebase/firestore";
-import React, { useContext, useEffect, useRef, useState,displaySetupSelected } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { db } from "../../firebase/firebaseConfig";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const SetupCard = ({ openSetup, setOpenSetup,setup, oneFilter, setOneFilter}) => {
- 
+const SetupCard = ({
+  openSetup,
+  setOpenSetup,
+  setup,
+  oneFilter,
+  setOneFilter,
+}) => {
   const { currentUser } = useContext(UserContext);
 
-const displaySetupSelected = () => {
-  const oneSetup= openSetup.filter((el)=> el.id === setup.id)
-setOneFilter(oneSetup)
-}
+  // permet de filtrer le setup qu'on souhaite afficher
+  const displaySetupSelected = () => {
+    const oneSetup = openSetup.filter((el) => el.id === setup.id);
+    setOneFilter(oneSetup);
+  };
 
- 
-
-  const closeSetup = () => {};
+  // supprime le setup
+  const deleteSetup = async () => {
+    await deleteDoc(doc(db, "users", currentUser.uid, "setup", setup.id));
+  };
 
   return (
     <div className="container-setup-card">
       <div className="header-setup-card">
         <span></span>
-        <DeleteIcon />
+        <DeleteIcon onClick={deleteSetup} />
       </div>
       <img src={exampleAqua} alt="aquarium" />
-      <div  onClick={displaySetupSelected} className="header-setup-card">
+      <div onClick={displaySetupSelected} className="header-setup-card">
         <span>Ouvrir le Setup</span>
         <FolderOpenIcon />
       </div>
