@@ -108,7 +108,7 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
         </div>
       </div>
 
-      <nav>
+      <nav className="nav-dashboard">
         <div className="link-nav">
           <InsightsIcon />
           <Link className="link-nav-dashboard" to="/private/analyse">

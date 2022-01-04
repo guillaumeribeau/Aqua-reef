@@ -1,3 +1,7 @@
 .container-hero-dashboard {
-  @extend %centerRows;
+  @extend %centerColumns;
+}
+
+.container-3d-clown{
+  margin-top: 250px;
 }

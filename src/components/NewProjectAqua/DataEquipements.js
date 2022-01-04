@@ -9,19 +9,24 @@ import chauffage from "../../images/chauffage.png";
 import osmoseur from "../../images/osmoseur.png";
 import roches from "../../images/roches.png";
 import refractometre from "../../images/refractometre.png";
+import groupe from "../../images/groupe-froid.png";
+import sel from "../../images/sel.png";
+import test from "../../images/test.png";
+import ventilateur from "../../images/ventilateur.png";
+import osmolateur from "../../images/osmolateur.png";
+
+import { v4 as uuidv4 } from 'uuid';
 
 export const listOfImageEquipements = [
     {
       title: "Aquarium",
-     
-      id: 1,
+      id: uuidv4(),
       src: aquarium,
       alt: "example aquarium",
     },
     {
       title: "Pompe doseuse",
-     
-      id: 2,
+      id: uuidv4(),
       src: doseuse,
       alt: "exemple pompe doseuse",
     },
@@ -83,10 +88,41 @@ export const listOfImageEquipements = [
     },
     {
       title: "Réfractomètre",
-  
       id: 11,
       src: refractometre,
       alt: "exemple de réfractometre",
+    },
+    {
+      title: "groupe-froid",
+      id: 12,
+      src: groupe,
+      alt: "exemple de groupe-froid",
+    },
+    {
+      title: "osmolateur",
+      id: 13,
+      src: osmolateur,
+      alt: "exemple de osmolateur",
+    },
+    {
+      title: "sel marin",
+      id: 14,
+      src: sel,
+      alt: "exemple de sel marin",
+    },
+    {
+      title: "test",
+  
+      id: 15,
+      src: test,
+      alt: "exemple de test",
+    },
+    {
+      title: "ventilateur",
+  
+      id: 16,
+      src: ventilateur,
+      alt: "exemple de ventilateur",
     },
   ];
   

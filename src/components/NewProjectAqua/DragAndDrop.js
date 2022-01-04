@@ -7,7 +7,7 @@ import ImageEquipements from "./ImageEquipements";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
-
+import { v4 as uuidv4 } from 'uuid';
 const DragAndDrop = () => {
   const { currentUser } = useContext(UserContext);
   const [nameEquipement, setNameEquipement] = useState("");

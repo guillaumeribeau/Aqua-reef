@@ -11,13 +11,8 @@ import UserMenu from "../users/UserMenu";
 const Navigation = () => {
   return (
     <div className="header">
-      <div>
-        <img src={logo} alt="logo de aqua gest reef" />
-      </div>
-
-      <nav>
-        <Link to="/">Dashboard</Link>
-        <Link to="/home">Home</Link>
+      <nav className="nav-header">
+        <Link to="/">Home</Link>
         <Link to="/blog">Blog</Link>
         <Link to="/contact">Contact</Link>
       </nav>

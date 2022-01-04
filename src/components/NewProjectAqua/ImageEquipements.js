@@ -18,10 +18,10 @@ const ImageEquipements = ({
   nameEquipement,
   setNameEquipement,
   priceEquipement,
-  setPriceEquipement
+  setPriceEquipement,
 }) => {
   const [deleteIconVisible, setDeleteIconVisible] = useState(IconDelete);
- 
+
   const [editToggleName, setEditToggleName] = useState(true);
   const [editTogglePrice, setEditTogglePrice] = useState(true);
   const inputNameEquipement = useRef();
@@ -51,12 +51,12 @@ const ImageEquipements = ({
 
   const registerNameEquipement = (e) => {
     e.preventDefault();
-   setNameEquipement(inputNameEquipement.current.value)
+    setNameEquipement(inputNameEquipement.current.value);
     setEditToggleName(false);
   };
   const registerPriceEquipement = (e) => {
     e.preventDefault();
-  setPriceEquipement(inputPriceEquipement.current.value)
+    setPriceEquipement(inputPriceEquipement.current.value);
     setEditTogglePrice(false);
   };
 
@@ -109,7 +109,6 @@ const ImageEquipements = ({
     <>
       {deleteIconVisible ? (
         <div
-          key={id}
           ref={drag}
           className="image-equipement"
           style={{ border: isDragging ? "3px solid blue" : "" }}
@@ -122,19 +121,16 @@ const ImageEquipements = ({
             />
           </div>
           <img src={src} alt={alt} />
-           {logiqueInputDisplay}
-
+          {logiqueInputDisplay}
         </div>
       ) : (
         <div
-          key={id}
           ref={drag}
           className="image-equipement"
           style={{ border: isDragging ? "3px solid blue" : "" }}
         >
           <span>{title}</span>
           <img src={src} alt={alt} />
-     
         </div>
       )}
     </>

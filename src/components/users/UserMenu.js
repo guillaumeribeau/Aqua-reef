@@ -61,6 +61,7 @@ export default function UserMenu() {
   }
 
   return (
+    <div className="menu-user">
     <Stack direction="row" spacing={2}>
       <div>
         <Button
@@ -109,5 +110,6 @@ export default function UserMenu() {
         </Popper>
       </div>
     </Stack>
+    </div>
   );
 }
