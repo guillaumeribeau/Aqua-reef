@@ -1,8 +1,22 @@
+.container-drag-drop-board {
+  @extend %centerColumns;
+
+  img {
+    margin-right: 15px;
+    max-width: 150px;
+    height: 150px;
+    cursor: pointer;
+  }
+}
+
+
 // image of diffents equipements
 .container-image-equipements {
   @extend %centerRows;
   justify-content: space-between; 
   flex-wrap: wrap;
+  margin-left: 20px;
+ 
 }
 .image-equipement {
   @extend %centerColumns;
@@ -26,16 +40,6 @@
 }
 
 
-.container-drag-drop-board {
-  @extend %centerColumns;
-  img {
-    margin-right: 15px;
-    object-fit: cover;
-    max-width: 150px;
-    height: 150px;
-    cursor: pointer;
-  }
-}
 
 .instruction {
   @extend %centerColumns;

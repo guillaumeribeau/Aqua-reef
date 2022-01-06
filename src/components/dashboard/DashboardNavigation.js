@@ -83,14 +83,18 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
   };
 
   return (
-    <div className="container-dashboard">
+    
+    <div className="container-dashboard-navigation ">
       <div className="title-header-dashboard">
         <h3>Bienvenue {currentUser.displayName}</h3>
       </div>
       <div className="header-dashboard">
         <img src={mainPhoto} alt="logo de aqua gest reef" />
-        <Addphoto />
-        <div className="legend-header-dashboard">
+        
+        
+      </div>
+      <Addphoto />
+      <div className="legend-header-dashboard">
           {editToggle ? (
             <>
               <input type="text" ref={inputNameAqua} />
@@ -106,8 +110,6 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
             </>
           )}
         </div>
-      </div>
-
       <nav className="nav-dashboard">
         <div className="link-nav">
           <InsightsIcon />
@@ -120,7 +122,7 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
           <Link
             className="link-nav-dashboard"
             activeClassName="active-link-nav-dashboard"
-            to="/population"
+            to="/private/population"
           >
             Ma Population
           </Link>
@@ -130,7 +132,7 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
           <Link
             className="link-nav-dashboard"
             activeClassName="active-link-nav-dashboard"
-            to="/reproduction"
+            to="/private/reproduction"
           >
             Reproduction
           </Link>

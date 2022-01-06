@@ -2,10 +2,12 @@
 @import "./utils/generalSettings";
 @import "./utils/mixins";
 @import "./utils/placeHolder";
-@import "../components/layout/heroSection";
+@import "../home/heroSection";
+@import "../population/population";
 @import "../components/users/sign";
 @import "../components/layout/navigation";
 @import "../components/NewProjectAqua/newProjectAqua";
+@import "../animation3d/clown";
 @import "./pages/home";
 @import "../components/Setup/setup";
 @import "./pages/analyseWater";

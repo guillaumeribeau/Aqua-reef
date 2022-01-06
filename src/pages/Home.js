@@ -1,23 +1,16 @@
 import { Suspense } from "react";
-import Clown from "../animation3d/Clown";
-import HeroSection from "../components/layout/HeroSection";
+
 import SignInModal from "../components/users/SignInModal";
 import SignUpModal from "../components/users/SignUpModal";
 import { Canvas } from "react-three-fiber";
+import HeroSection from "../home/HeroSection";
 const Home = () => {
-
-
-
-
   return (
     <>
       <div className="container-hero-dashboard">
         <HeroSection />
-        <SignInModal/>
-        <SignUpModal/>
-        {/* <div className='container-3d-clown'>
-        <Clown/>
-        </div> */}
+        <SignInModal />
+        <SignUpModal />
       </div>
     </>
   );

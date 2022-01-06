@@ -1,0 +1,46 @@
+.container-card-fish {
+  @extend %centerRows;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  color: black;
+  font-size: 12px;
+}
+
+.card-fish {
+  // @extend %centerRows;
+  position: relative;
+  border-radius: 37px;
+  background: #dbf9f9;
+  box-shadow: -6px 6px 14px #c9e5e5, 6px -6px 14px #edffff;
+  width: 250px;
+  height: 350px;
+  margin: 10px;
+  padding: 15px 0 15px;
+  overflow: hidden;
+  white-space: break-spaces;
+  cursor: pointer;
+  img {
+    // position: absolute;
+    width: 250px;
+    // height: 100%;
+    object-fit: cover;
+  }
+  p {
+    margin-top: 15px;
+    margin-right: 5px;
+  }
+}
+
+.title-fish,
+.legend-fish,
+.title-description,.add-fish-container {
+  @extend %centerRows;
+  justify-content: space-between;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 10px;
+}
+.title-description {
+  font-size: 10px;
+}

@@ -9,6 +9,7 @@ import DashboardDefault from "./pages/DashboardDefault";
 import Private from "./components/users/Privates";
 import NewProjectAqua from "./components/NewProjectAqua";
 import Setup from "./components/Setup/Setup";
+import Population from "./population/Population";
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
             path="/private/analyse"
             element={<DashboardDefault childrenCards={<AnalyseWater />} />}
           />
-          <Route path="/private/population" element={<DashboardDefault />} />
+          <Route path="/private/population" element={<DashboardDefault childrenCards={<Population/>} />} />
           <Route path="/private/reproduction" element={<DashboardDefault />} />
           <Route path="/private/blog" element={<Blog />} />
           <Route path="/private/contact" element={<Contact />} />

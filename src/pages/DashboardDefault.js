@@ -12,9 +12,9 @@ const DashboardDefault = ({ childrenCards }) => {
     <>
       <Navigation />
       <div className="container-dashboard-default">
-        <div className="container-navigation-default">
+      
           <DashboardNavigation />
-        </div>
+       
         <div className="container-main-default">{childrenCards}</div>
       </div>
     </>

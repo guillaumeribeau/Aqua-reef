@@ -1,5 +1,5 @@
 import React, { Suspense, useRef, useState } from "react";
-import { useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 
 const Lights = () => {
@@ -28,7 +28,7 @@ const Lights = () => {
 };
 
 function Model() {
-  const gltf = useGLTF("/apple_imac/scene.gltf", true);
+  const gltf = useGLTF("/clown_fish/scene.gltf", true);
   return <primitive object={gltf.scene} dispose={null} position={[0, 0, 0]} />;
 }
 
@@ -39,19 +39,25 @@ const BoxClown = (props) => {
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
   // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.y += 0.01));
+  useFrame((state, delta) => {
+   // ref.current.position.x +=1;
+   //ref.current.position.z += 1;
+   //ref.current.position.y += 1;
+  });
   // Return the view, these are regular Threejs elements expressed in JSX
   return (
-      <group position={[0,-25,0]}>
+    <group position={[0,0,0]}>
     <mesh
       {...props}
-      position={[-35,-35,0]}
+      position={[2, -0.99, 0]}
       ref={ref}
-      scale={clicked ? 145 : 120}
+      scale={clicked ? 15 : 15}
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}
+      
     >
+      <OrbitControls />
       <Model />
     </mesh>
     </group>
@@ -60,19 +66,18 @@ const BoxClown = (props) => {
 
 export default function Clown(props) {
   return (
-    <Suspense fallback={null}>
-      {" "}
+    <div className="container-clown-3d">
       <Canvas
         concurrent
         colorManagement
         camera={{ position: [0, 0, 120], fov: 70 }}
         shadows
       >
-        <Lights />
-        <BoxClown />
+        <Suspense fallback={null}>
+          <Lights />
+          <BoxClown />
+        </Suspense>
       </Canvas>
-    </Suspense>
+    </div>
   );
 }
-
-
