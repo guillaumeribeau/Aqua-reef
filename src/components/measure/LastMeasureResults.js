@@ -27,7 +27,7 @@ import {
 import { auth, db } from "../../firebase/firebaseConfig";
 
 import { UserContext } from "../../context/UserContext";
-import { SettingsBackupRestoreSharp } from "@mui/icons-material";
+
 
 const LastMeasureResults = () => {
   const { currentUser } = useContext(UserContext);
@@ -48,6 +48,7 @@ const LastMeasureResults = () => {
     return unsub;
   }, []);
 
+  
   return (
     <>
       {lastMeasure[0] && (

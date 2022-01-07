@@ -22,7 +22,9 @@ const DashboardNavigation = () => {
 
   const [titleAqua, setTitleAqua] = useState(false);
   const [editToggle, setEditToggle] = useState(false);
-  const inputNameAqua = useRef();
+  const [inputNameAqua, setInputNameAqua] = useState('');
+
+  //const inputNameAqua = useRef();
 
   const toggle = () => {
     setEditToggle(!editToggle);
@@ -77,7 +79,7 @@ const DashboardNavigation = () => {
   const registerNameAqua = (e) => {
     e.preventDefault();
 const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
-    setDoc(titleRef, {title:inputNameAqua.current.value},
+    setDoc(titleRef, {title:inputNameAqua},
     );
     setEditToggle(false)
   };
@@ -97,7 +99,7 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
       <div className="legend-header-dashboard">
           {editToggle ? (
             <>
-              <input type="text" ref={inputNameAqua} />
+              <input type="text" onChange={(e)=> setInputNameAqua(e.target.value)} defaultValue={inputNameAqua}/>
               <CheckIcon onClick={registerNameAqua} sx={{cursor:'pointer'}} />
               
             </>

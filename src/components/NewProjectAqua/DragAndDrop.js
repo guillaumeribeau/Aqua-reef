@@ -13,6 +13,7 @@ const DragAndDrop = () => {
   const [nameEquipement, setNameEquipement] = useState("");
   const [priceEquipement, setPriceEquipement] = useState("");
   const [aquaBoard, setAquaBoard] = useState([]);
+  const [isSetupRegister, setIsSetupRegister] = useState(false);
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "div",
@@ -40,6 +41,11 @@ const DragAndDrop = () => {
       }
     );
     setAquaBoard([]);
+    setIsSetupRegister(true)
+    setTimeout(() => {
+      setIsSetupRegister(false)
+    }, 2000);
+    
   };
   return (
     <>
@@ -68,6 +74,7 @@ const DragAndDrop = () => {
           />
         </div>
         <div className="aqua-project-board" ref={drop}>
+          
           {aquaBoard.map((picture) => {
             return (
               <ImageEquipements
@@ -88,6 +95,7 @@ const DragAndDrop = () => {
             );
           })}
         </div>
+        {isSetupRegister && <div className="setup-register-ok">Votre Setup est bien enregistrer</div>}
         <button onClick={registerSetup} className="btn-register-setup">
           Enregistrer mon setup
         </button>

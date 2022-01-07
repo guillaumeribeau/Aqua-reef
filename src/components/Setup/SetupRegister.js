@@ -15,6 +15,7 @@ const SetupRegister = ({ openSetup, setOpenSetup,setOneFilter,oneFilter}) => {
   const { currentUser } = useContext(UserContext);
   const [setupRegister, setsetupRegister] = useState([]);
 
+
   useEffect(() => {
     // select a collection
     const collectionRef = collection(db, "users", currentUser.uid, "setup");
@@ -26,7 +27,7 @@ const SetupRegister = ({ openSetup, setOpenSetup,setOneFilter,oneFilter}) => {
         snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       );
       setOpenSetup(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
+    
  
 
     });

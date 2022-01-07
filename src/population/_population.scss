@@ -1,3 +1,48 @@
+.sort-container {
+  width: 90%;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  padding: 8px;
+  border-radius: 15px;
+  background: #3333;
+  color: #dbf9f9;
+  box-shadow: 0 2px 2px rgba(51, 51, 51, 0.3);
+  position: relative;
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    input[type="radio"] {
+      transform: translate(-5px, 1px);
+      cursor: pointer;
+    }
+    label {
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
+  span {
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+input[type="range"] {
+  cursor: pointer;
+}
+
+.cancel {
+  @extend %centerRows;
+    margin: 20px auto 30px;
+  width: 100%;
+  button {
+    @include btn;
+  }
+}
+
 .container-card-fish {
   @extend %centerRows;
   align-items: flex-start;
@@ -6,23 +51,24 @@
   font-size: 12px;
 }
 
-.card-fish {
+.card-wrapper-fish {
   // @extend %centerRows;
   position: relative;
+  perspective: 2000px;
+  perspective-origin: top;
   border-radius: 37px;
   background: #dbf9f9;
   box-shadow: -6px 6px 14px #c9e5e5, 6px -6px 14px #edffff;
   width: 250px;
-  height: 350px;
+  height: 400px;
   margin: 10px;
   padding: 15px 0 15px;
   overflow: hidden;
   white-space: break-spaces;
   cursor: pointer;
+
   img {
-    // position: absolute;
     width: 250px;
-    // height: 100%;
     object-fit: cover;
   }
   p {
@@ -31,9 +77,45 @@
   }
 }
 
+.card-wrapper-fish:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.card-fish-front,
+.card-fish-back {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-fish-front {
+  background: #dbf9f9;
+}
+
+.card-fish-back {
+  background-color: rgba(51, 51, 51, 0.8);
+  transform: rotateY(180deg);
+  height: 100%;
+  padding: 15px;
+  p {
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+
 .title-fish,
 .legend-fish,
-.title-description,.add-fish-container {
+.title-description,
+.add-fish-container {
   @extend %centerRows;
   justify-content: space-between;
   margin-right: 5px;
@@ -43,4 +125,16 @@
 }
 .title-description {
   font-size: 10px;
+}
+
+.add-fish-container {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.message-add-fish-ok {
+  @extend %centerRows;
+  height: 55px;
+  background-image: $background-header-dashboard;
+  color: white;
 }

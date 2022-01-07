@@ -33,7 +33,9 @@ export default function FormsMeasure () {
 
 const {currentUser}=useContext(UserContext)
 console.log(currentUser.uid);
- const date = new Date().toLocaleDateString();
+ const date = new Date().toLocaleDateString('fr-Fr',
+ { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric' }
+ );
 
  // essai de créer une collection user firestore:
  const registerNewMeasure= async()=>{

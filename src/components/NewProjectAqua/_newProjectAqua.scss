@@ -9,14 +9,12 @@
   }
 }
 
-
 // image of diffents equipements
 .container-image-equipements {
   @extend %centerRows;
-  justify-content: space-between; 
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-left: 20px;
- 
 }
 .image-equipement {
   @extend %centerColumns;
@@ -39,8 +37,6 @@
   @extend %centerRows;
 }
 
-
-
 .instruction {
   @extend %centerColumns;
   width: 100%;
@@ -53,31 +49,39 @@
 
 // aqua board dropper
 .aqua-project-board {
+  position: relative;
   @extend %centerRows;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding:70px;
+  padding: 70px;
   min-width: 1000px;
   max-width: 1200px;
   min-height: 600px;
   @include boxShadowDashboardNav;
- background-color: $background-navigation-dashboard;
+  background-color: $background-navigation-dashboard;
   margin-bottom: 50px;
 }
 
-.container-input-equipement{
-@extend %centerRows;
-justify-content:space-between;
+.container-input-equipement {
+  @extend %centerRows;
+  justify-content: space-between;
 
-input{
-  width: 80px;
+  input {
+    width: 80px;
+  }
 }
 
-}
-
-
-
-.btn-register-setup{
+.btn-register-setup {
   @include btn;
   margin-bottom: 50px;
+}
+
+.setup-register-ok {
+  @extend %centerRows;
+height: 50px;
+padding: 20px;
+border-radius: 20px;
+background: rgba($color: green, $alpha: 0.3);
+color: black;
+
 }
