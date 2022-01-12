@@ -54,7 +54,7 @@ const DashboardNavigation = () => {
   }, []);
 
   useEffect(() => {
-    // select a document for picture aquarium
+    // select a document for title aquarium
     const collectionRef = doc(
       db,
       "users",
@@ -95,7 +95,7 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
         
         
       </div>
-      <Addphoto />
+      <Addphoto StorageUrl={`${currentUser.uid}/images/aquarium`} RegisterUrlInFireStore={`users/${currentUser.uid}/aquarium/main-photo`}/>
       <div className="legend-header-dashboard">
           {editToggle ? (
             <>

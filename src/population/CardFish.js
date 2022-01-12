@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddIcon from "@mui/icons-material/Add";
-import { listOfPopulation } from "./DataPop";
+
 
 const CardFish = ({
   name,
@@ -17,18 +17,18 @@ const CardFish = ({
 }) => {
   const [clickAdd,setClickAdd] = useState(false);
 
-  const addCardFishInMyAquarium = () => {
-    const pictureList = listOfPopulation.filter(
-      (cardPop) => card.id === cardPop.id
-    );
-    console.log(pictureList);
-    setAddNewCardFish(pictureList);
-       setClickAdd(true)
-    setTimeout(()=>{
-     setClickAdd(false)
-    },2000)
+  // const addCardFishInMyAquarium = () => {
+  //   const pictureList = listOfPopulation.filter(
+  //     (cardPop) => card.id === cardPop.id
+  //   );
+  //   console.log(pictureList);
+  //   setAddNewCardFish(pictureList);
+  //      setClickAdd(true)
+  //   setTimeout(()=>{
+  //    setClickAdd(false)
+  //   },2000)
  
-  };
+  // };
 
   return (
     <>
@@ -47,7 +47,7 @@ const CardFish = ({
                 fontSize: "45px",
               },
             }}
-            onClick={addCardFishInMyAquarium}
+           
           />
         </div> 
 
