@@ -43,7 +43,7 @@ export default function SignUpModal() {
       );
        console.log(cred);
       toggleModals("close");
-      navigate("/private/dashboard");
+      navigate("/private/analyse");
     } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");
@@ -59,17 +59,7 @@ export default function SignUpModal() {
     setValidation("");
     toggleModals("close");
   };
-  // essai de créer une collection user avec l'uid de l'authentifiaction
-  // const createUserWithUid = async () => {
-  //   if (currentUser && inputs.current[0].value !== undefined) {
-  //     await setDoc(doc(db, "users", currentUser.uid), {
-  //       email: inputs.current[0].value,
-  //       pseudo: inputs.current[1].value,
-  //     });
-  //   }
-  // };
 
-  // createUserWithUid();
 
   return (
     <>

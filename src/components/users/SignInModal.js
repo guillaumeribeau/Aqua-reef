@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebaseConfig";
 
 export default function SignInModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext);
@@ -17,18 +19,27 @@ export default function SignInModal() {
   };
   const formRef = useRef();
 
+  // s'identifier methode firebase 9
+  // const signIn = (email, pwd) => {
+  //   signInWithEmailAndPassword(auth, email, pwd)
+
+  // };
   const handleForm = async (e) => {
     e.preventDefault();
-    console.log(inputs.current[1].value);
-   console.log(inputs.current[0].value);
-    await signIn(inputs.current[0].value, inputs.current[1].value);
 
-    setValidation("");
-  formRef.current.reset()
-    await toggleModals("close");
-    navigate("/private/dashboard");
-
-    //catch setValidation("Wopsy, email and/or password incorrect");
+    try {
+      const cred = await signInWithEmailAndPassword(
+        auth,
+        inputs.current[0].value,
+        inputs.current[1].value
+      );
+      setValidation("");
+      toggleModals("close");
+      navigate("/private/analyse");
+    } catch (error) {
+      console.log(error);
+      setValidation("Wopsy, email and/or password incorrect");
+    }
   };
 
   const closeModal = () => {

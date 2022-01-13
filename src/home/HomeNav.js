@@ -25,7 +25,7 @@ const HomeNav = () => {
         >
           Se connecter
         </Link>
-        <Link className="btn-home" to="/private/dashboard">
+        <Link className="btn-home" to="/private/analyse">
           dashboard
         </Link>
       </div>
