@@ -6,6 +6,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { UserContext } from "../../context/UserContext";
 import { db } from "../../firebase/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import { listOfImageEquipements } from "./DataEquipements";
 const ImageEquipements = ({
   alt,
   title,
@@ -15,6 +16,7 @@ const ImageEquipements = ({
   aquaBoard,
   setAquaBoard,
   picture,
+  putEquipementInAquaBoard,
   nameEquipement,
   setNameEquipement,
   priceEquipement,
@@ -117,7 +119,12 @@ const ImageEquipements = ({
             <span>{title}</span>
             <DeleteIcon
               onClick={deleteEquipementOnBoard}
-              sx={{ fontSize: "25px", color: "black", cursor: "pointer" }}
+              sx={{
+                fontSize: "25px",
+                color: "black",
+                cursor: "pointer",
+                zIndex: "1",
+              }}
             />
           </div>
           <img src={src} alt={alt} />

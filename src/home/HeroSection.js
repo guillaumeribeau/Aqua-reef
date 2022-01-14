@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebaseConfig";
 import Clown from "../animation3d/Clown";
 import HomeNav from "./HomeNav";
+import ScrollBtn from "../components/loader/ScollBtn";
 /**
  * display Hero section
  * @components
@@ -40,15 +41,8 @@ const HeroSection = () => {
             <h2>Reef Gest</h2>
             {/* <img src={heroImg} alt="" /> */}
           </div>
-
-          <div className="container-scroll-btn">
-            <div class="scrolldown">
-              <div class="chevrons">
-                <div class="chevrondown"></div>
-                <div class="chevrondown"></div>
-              </div>
-            </div>
-          </div>
+<ScrollBtn bottomPosition={15} />
+         
         </div>
       </div>
     </>

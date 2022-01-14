@@ -9,7 +9,9 @@ import DashboardDefault from "./pages/DashboardDefault";
 import Private from "./components/users/Privates";
 import NewProjectAqua from "./components/NewProjectAqua";
 import Setup from "./components/Setup/Setup";
-import Population from "./population/Population";
+import Population from "./allCardFish/AllCardFish";
+import AllCardFish from "./allCardFish/AllCardFish";
+import MyPopulation from "./myPopulation/MyPopulation";
 
 
 function App() {
@@ -44,7 +46,8 @@ function App() {
             path="/private/analyse"
             element={<DashboardDefault childrenCards={<AnalyseWater />} />}
           />
-          <Route path="/private/population" element={<DashboardDefault childrenCards={<Population/>} />} />
+          <Route path="/private/cardfish" element={<DashboardDefault childrenCards={<AllCardFish/>} />} />
+          <Route path="/private/mypopulation" element={<DashboardDefault childrenCards={<MyPopulation/>} />} />
           <Route path="/private/reproduction" element={<DashboardDefault />} />
           <Route path="/private/blog" element={<Blog />} />
           <Route path="/private/contact" element={<Contact />} />

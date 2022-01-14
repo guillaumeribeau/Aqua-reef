@@ -2,14 +2,22 @@
 @import "./utils/generalSettings";
 @import "./utils/mixins";
 @import "./utils/placeHolder";
+@import "./utils/placeHolder";
+
+@import "../animation3d/clown";
+
 @import "../home/heroSection";
-@import "../population/population";
+
+@import "../allCardFish/AllCardFish";
+@import "../allCardFish/createNewCardFish";
+
+@import "../components/loader/LoaderPoint.scss";
 @import "../components/users/sign";
 @import "../components/layout/navigation";
-@import "../population/createNewCardFish";
 @import "../components/NewProjectAqua/newProjectAqua";
-@import "../animation3d/clown";
-@import "./pages/home";
 @import "../components/Setup/setup";
+
+
+@import "./pages/home";
 @import "./pages/analyseWater";
 @import "./pages/dashboardDefault";

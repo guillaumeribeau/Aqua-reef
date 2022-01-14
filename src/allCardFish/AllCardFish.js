@@ -11,21 +11,24 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+import ScrollBtn from "../components/loader/ScollBtn";
 
-const Population = () => {
-  
+const AllCardFish = () => {
   const [newCardFish, setNewCardFish] = useState([]);
   const [addNewCardFish, setAddNewCardFish] = useState([]);
+  const [displayForms, setDisplayForms] = useState(false);
+  
 
   const [rangeValue, setRangeValue] = useState(4);
   const [selectedRadio, setSelectedRadio] = useState("");
   const radios = ["100L", "150L", "300L", "500L"];
-
+ 
+  
   useEffect(() => {
     // select a collection
     const collectionRef = collection(db, "fish");
     // filter method firebase
-    const q = query(collectionRef, orderBy("time", "desc"), limit(10));
+    const q = query(collectionRef, orderBy("time", "desc"), limit(1000));
     console.log(q);
     const unsub = onSnapshot(q, (snapshot) => {
       setNewCardFish(
@@ -35,11 +38,30 @@ const Population = () => {
     return unsub;
   }, []);
 
- 
-  return ( 
+  // permet d'afficher plus de poisson au Scoll
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", () => {
+        const { scrollHeight, scrollTop, clientHeight } =
+          document.documentElement;
+
+        if (clientHeight + scrollTop >= scrollHeight - 20) {
+          console.log("scroll ok");
+         
+          setRangeValue(rangeValue + 3);
+        }
+      });
+    }
+    watchScroll();
+  },[]);
+
+
+  return (
+      <>
     <div className="container-card-fish">
-       <CreateNewCardFish />
-    
+      <button onClick={()=>setDisplayForms(true)}>Créer une nouvelle fiche</button>
+      {displayForms && <CreateNewCardFish setDisplayForms={setDisplayForms} />}
+
       <div className="sort-container">
         <input
           type="range"
@@ -79,7 +101,7 @@ const Population = () => {
       </div>
       {newCardFish
         .filter((card) => card.volume.includes(selectedRadio))
-        .slice(0, rangeValue)
+      .slice(0, rangeValue)
         .map((card) => {
           return (
             <CardFish
@@ -100,9 +122,14 @@ const Population = () => {
             />
           );
         })}
+      
+
+   <ScrollBtn bottomPosition={-120}/>
+    
     </div>
     
+   </>
   );
 };
 
-export default Population;
+export default AllCardFish;

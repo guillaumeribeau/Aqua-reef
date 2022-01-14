@@ -25,6 +25,8 @@
 .container-main-default {
   @extend %centerRows;
   background-color: $background-main-dashboard;
+  min-width: 900px;
+  min-height: 800px;
     border-radius: 20px;
   margin: 10px 30px 300px 50px;
   z-index: 2;
@@ -35,12 +37,11 @@
 
 .container-dashboard-navigation {
   background-color: $background-navigation-dashboard;
-  min-width: 300px;
+  width: 350px;
   height: 800px;
   margin-top: 10px;
   border-radius: 20px;
-
-  margin: 10px 30px 100px 30px;
+ margin: 10px 30px 100px 30px;
   @include boxShadowDashboardNav;
 }
 

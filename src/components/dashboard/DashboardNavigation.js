@@ -124,9 +124,9 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
           <Link
             className="link-nav-dashboard"
             activeClassName="active-link-nav-dashboard"
-            to="/private/population"
+            to="/private/cardFish"
           >
-            Ma Population
+            Les fiches poissons
           </Link>
         </div>
         <div className="link-nav">
@@ -134,9 +134,9 @@ const titleRef= doc(db,"users",currentUser.uid,'aquarium','main-title')
           <Link
             className="link-nav-dashboard"
             activeClassName="active-link-nav-dashboard"
-            to="/private/reproduction"
+            to="/private/mypopulation"
           >
-            Reproduction
+            Ma population
           </Link>
         </div>
         <div className="link-nav">

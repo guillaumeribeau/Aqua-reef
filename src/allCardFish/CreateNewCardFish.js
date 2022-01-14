@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import Addphoto from "../components/dashboard/Addphoto";
 import { db, storage } from "../firebase/firebaseConfig";
 
-const CreateNewCardFish = () => {
+const CreateNewCardFish = ({setDisplayForms}) => {
   const [file, setFile] = useState("");
   const [name, setName] = useState("");
   const [latin, setLatin] = useState("");
@@ -44,7 +44,14 @@ const CreateNewCardFish = () => {
 e.target.reset()
   };
 
+  const closeModals = () => {
+    setDisplayForms(false)
+    
+  }
+
   return (
+    <div  onClick={closeModals} className="fixed-container-modals">
+      <div className="container-modals"></div>
     <form  onSubmit={handleSubmitnewFish} className="create-card-fish-container">
       <label htmlFor="name">Nom Communs</label>
       <input
@@ -78,6 +85,8 @@ e.target.reset()
 
       <button type="submit">Enregistrer</button>
     </form>
+    </div>
+
   );
 };
 

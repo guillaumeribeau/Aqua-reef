@@ -7,13 +7,17 @@ import ImageEquipements from "./ImageEquipements";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import LoaderPoint from "../loader/LoaderPoint";
 const DragAndDrop = () => {
   const { currentUser } = useContext(UserContext);
   const [nameEquipement, setNameEquipement] = useState("");
   const [priceEquipement, setPriceEquipement] = useState("");
   const [aquaBoard, setAquaBoard] = useState([]);
-  const [isSetupRegister, setIsSetupRegister] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
+  const [userMessage, setUserMessage] = useState("");
+  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "div",
@@ -30,23 +34,45 @@ const DragAndDrop = () => {
     setAquaBoard((board) => [...board, pictureList[0]]);
   };
 
+
+
+
   // register setup in firebase
 
   const registerSetup = async () => {
-    const docRef = await addDoc(
-      collection(db, "users", currentUser.uid, "setup"),
-      {
-        aquaBoard,
-        timestamp: serverTimestamp(),
-      }
-    );
-    setAquaBoard([]);
-    setIsSetupRegister(true)
-    setTimeout(() => {
-      setIsSetupRegister(false)
-    }, 2000);
+   
     
+    if (aquaBoard.length >= 1) {
+      if(error){
+        setError(false)
+      }
+      setLoader(true);
+      const docRef = await addDoc(
+        collection(db, "users", currentUser.uid, "setup"),
+        {
+          aquaBoard,
+          timestamp: serverTimestamp(),
+        }
+      );
+      await setLoader(false) 
+      setIsRegister(true)
+      setAquaBoard([]);
+  setUserMessage("Votre setup est enregistrer");
+      setTimeout(() => {
+      setIsRegister(false)
+      }, 2000);
+     
+    } else {
+      setError(true);
+      setUserMessage("vous devez mettre au moins un équipement !");
+    }
   };
+
+  const closeErrorMessage = () => {
+    setUserMessage('')
+    setError(false)
+    setIsRegister(false)
+  }
   return (
     <>
       <div className="container-drag-drop-board">
@@ -60,21 +86,24 @@ const DragAndDrop = () => {
                 title={picture.title}
                 IconDelete={false}
                 id={picture.id}
+                picture={picture}
+           
               />
             );
           })}
         </div>
-        <div className="instruction">
-          <span>
-            <strong>Glissez/Déposez</strong> un équipement pour créer votre
-            aquarium
-          </span>
-          <KeyboardDoubleArrowDownIcon
-            sx={{ fontSize: "145px", color: "black" }}
-          />
-        </div>
+
         <div className="aqua-project-board" ref={drop}>
-          
+          <div className="instruction">
+            <span>
+              <strong>Glissez/Déposez</strong> un équipement pour créer votre
+              aquarium
+            </span>
+
+            <KeyboardDoubleArrowDownIcon
+              sx={{ fontSize: "75px", color: "black"}}
+            />
+          </div>
           {aquaBoard.map((picture) => {
             return (
               <ImageEquipements
@@ -87,6 +116,7 @@ const DragAndDrop = () => {
                 aquaBoard={aquaBoard}
                 setAquaBoard={setAquaBoard}
                 picture={picture}
+              
                 nameEquipement={nameEquipement}
                 priceEquipement={priceEquipement}
                 setNameEquipement={setNameEquipement}
@@ -95,7 +125,14 @@ const DragAndDrop = () => {
             );
           })}
         </div>
-        {isSetupRegister && <div className="setup-register-ok">Votre Setup est bien enregistrer</div>}
+        {loader && <LoaderPoint/>}
+        {isRegister && (
+          <div className={error ? "setup-register-error" : "setup-register-ok"}>
+            {error && <span onClick={closeErrorMessage}>close</span>}
+            {userMessage}
+          </div>
+        )}
+
         <button onClick={registerSetup} className="btn-register-setup">
           Enregistrer mon setup
         </button>
