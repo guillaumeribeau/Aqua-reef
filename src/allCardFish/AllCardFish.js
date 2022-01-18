@@ -15,7 +15,6 @@ import ScrollBtn from "../components/loader/ScollBtn";
 
 const AllCardFish = () => {
   const [newCardFish, setNewCardFish] = useState([]);
-  const [addNewCardFish, setAddNewCardFish] = useState([]);
   const [displayForms, setDisplayForms] = useState(false);
   
 
@@ -54,6 +53,7 @@ const AllCardFish = () => {
     }
     watchScroll();
   },[]);
+
 
 
   return (
@@ -108,6 +108,7 @@ const AllCardFish = () => {
               card={card}
               key={card.id}
               id={card.id}
+              size={card.size}
               name={card.name}
               latin={card.latin}
               photo={card.url}
@@ -117,8 +118,9 @@ const AllCardFish = () => {
               description={card.description}
               newCardFish={newCardFish}
               setNewCardFish={setNewCardFish}
-              addNewCardfish={addNewCardFish}
-              setAddNewCardFish={setAddNewCardFish}
+              addFishText={true}
+           
+             
             />
           );
         })}

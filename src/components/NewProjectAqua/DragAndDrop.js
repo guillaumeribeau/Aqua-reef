@@ -34,17 +34,12 @@ const DragAndDrop = () => {
     setAquaBoard((board) => [...board, pictureList[0]]);
   };
 
-
-
-
   // register setup in firebase
 
   const registerSetup = async () => {
-   
-    
     if (aquaBoard.length >= 1) {
-      if(error){
-        setError(false)
+      if (error) {
+        setError(false);
       }
       setLoader(true);
       const docRef = await addDoc(
@@ -54,14 +49,13 @@ const DragAndDrop = () => {
           timestamp: serverTimestamp(),
         }
       );
-      await setLoader(false) 
-      setIsRegister(true)
+      await setLoader(false);
+      setIsRegister(true);
       setAquaBoard([]);
-  setUserMessage("Votre setup est enregistrer");
+      setUserMessage("Votre setup est enregistrer");
       setTimeout(() => {
-      setIsRegister(false)
+        setIsRegister(false);
       }, 2000);
-     
     } else {
       setError(true);
       setUserMessage("vous devez mettre au moins un équipement !");
@@ -69,10 +63,10 @@ const DragAndDrop = () => {
   };
 
   const closeErrorMessage = () => {
-    setUserMessage('')
-    setError(false)
-    setIsRegister(false)
-  }
+    setUserMessage("");
+    setError(false);
+    setIsRegister(false);
+  };
   return (
     <>
       <div className="container-drag-drop-board">
@@ -87,7 +81,6 @@ const DragAndDrop = () => {
                 IconDelete={false}
                 id={picture.id}
                 picture={picture}
-           
               />
             );
           })}
@@ -101,7 +94,7 @@ const DragAndDrop = () => {
             </span>
 
             <KeyboardDoubleArrowDownIcon
-              sx={{ fontSize: "75px", color: "black"}}
+              sx={{ fontSize: "75px", color: "black" }}
             />
           </div>
           {aquaBoard.map((picture) => {
@@ -116,7 +109,6 @@ const DragAndDrop = () => {
                 aquaBoard={aquaBoard}
                 setAquaBoard={setAquaBoard}
                 picture={picture}
-              
                 nameEquipement={nameEquipement}
                 priceEquipement={priceEquipement}
                 setNameEquipement={setNameEquipement}
@@ -125,7 +117,7 @@ const DragAndDrop = () => {
             );
           })}
         </div>
-        {loader && <LoaderPoint/>}
+        {loader && <LoaderPoint />}
         {isRegister && (
           <div className={error ? "setup-register-error" : "setup-register-ok"}>
             {error && <span onClick={closeErrorMessage}>close</span>}

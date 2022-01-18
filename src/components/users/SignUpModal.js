@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebaseConfig";
 import { updateCurrentUser } from "firebase/auth";
+import WelcomeModals from "../welcome/WelcomeModals";
 
 export default function SignUpModal() {
   const { modalState, toggleModals, signUp } = useContext(UserContext);
   const { currentUser } = useContext(UserContext);
+  const [displayWelcomeModals,setDiplayWelcomeModals]=useState(true)
 
   const navigate = useNavigate();
 
@@ -43,7 +45,8 @@ export default function SignUpModal() {
       );
        console.log(cred);
       toggleModals("close");
-      navigate("/private/analyse");
+      setDiplayWelcomeModals(true)
+     // navigate("/private/analyse");
     } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");
@@ -63,6 +66,7 @@ export default function SignUpModal() {
 
   return (
     <>
+    {displayWelcomeModals && <WelcomeModals setDiplayWelcomeModals={setDiplayWelcomeModals}/>}
       {modalState.signUpModal && (
         <div className="fixed-container-modals">
           <div onClick={closeModal} className="container-modals"></div>

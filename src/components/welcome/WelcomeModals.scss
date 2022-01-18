@@ -1,20 +1,4 @@
-.fixed-container-modals{
-    position: fixed;
-    top:0;
-    width: 100%;
-    height: 100%;
-    z-index: 11;
-    }
-    
-    .container-modals{
-    background:black;
-    opacity: 0.7;
-    width: 100%;
-    height: 100vh;
-    }
-
-
-.create-card-fish-container {
+.welcome-form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,11 +9,11 @@
   font-family: "lato";
   font-weight: bold;
   padding: 30px;
-
-  border-radius: 50px;
-  background:$white-color;
-  
+border-radius: 50px;
+  background: $white-color;
 z-index: 15;
+  color: black;
+
   input,
   textarea {
     width: 60%;
@@ -43,6 +27,6 @@ z-index: 15;
     margin-bottom: 5px;
   }
   button {
-    @include btn;
+    cursor: pointer;
   }
 }
