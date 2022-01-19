@@ -8,6 +8,7 @@ import {
   doc,
   FieldValue,
   setDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 const Addphoto = ({StorageUrl,RegisterUrlInFireStore}) => {
@@ -28,13 +29,13 @@ const Addphoto = ({StorageUrl,RegisterUrlInFireStore}) => {
     await uploadBytes(storageRef, file);
     // permet de stocker url dans firestore
     getDownloadURL(storageRef).then((url) => {
-      setDoc(doc(db,`${RegisterUrlInFireStore}`), {
+      updateDoc(doc(db,`${RegisterUrlInFireStore}`), {
         url: url,
       });
     });
   };
   return (
-    <div>
+    <>
       <label htmlFor="img">Change la photo de ton Aquarium</label>
       <input
         id="img"
@@ -44,7 +45,7 @@ const Addphoto = ({StorageUrl,RegisterUrlInFireStore}) => {
       />
        <button onClick={onUpload}>Charger image</button>
       <span>{file && file.name}</span>
-    </div>
+    </>
   );
 };
 

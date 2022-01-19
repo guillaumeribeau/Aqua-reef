@@ -12,6 +12,7 @@ import Setup from "./components/Setup/Setup";
 import Population from "./allCardFish/AllCardFish";
 import AllCardFish from "./allCardFish/AllCardFish";
 import MyPopulation from "./myPopulation/MyPopulation";
+import AquaSettings from "./components/setting/AquaSettings";
 
 
 function App() {
@@ -48,7 +49,11 @@ function App() {
           />
           <Route path="/private/cardfish" element={<DashboardDefault childrenCards={<AllCardFish/>} />} />
           <Route path="/private/mypopulation" element={<DashboardDefault childrenCards={<MyPopulation/>} />} />
-          <Route path="/private/reproduction" element={<DashboardDefault />} />
+    
+          
+          <Route path="/private/aqua-settings" element={<AquaSettings/>} />
+
+
           <Route path="/private/blog" element={<Blog />} />
           <Route path="/private/contact" element={<Contact />} />
         </Route>

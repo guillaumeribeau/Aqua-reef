@@ -9,14 +9,15 @@ import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 
 import { Link } from "react-router-dom";
-import { UserContext} from "../../context/UserContext"
+import { UserContext } from "../../context/UserContext";
 
-import {signOut} from "firebase/auth"
-import { useNavigate } from 'react-router-dom'
-import {auth} from "../../firebase/firebaseConfig"
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase/firebaseConfig";
 
 export default function UserMenu() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
@@ -50,66 +51,74 @@ export default function UserMenu() {
     prevOpen.current = open;
   }, [open]);
 
-  const navigate = useNavigate()
+  
   const logOut = async () => {
     try {
-      await signOut(auth)
-      navigate("/")
+      await signOut(auth);
+      navigate("/");
     } catch {
-      alert("For some reasons we can't deconnect, please check your internet connexion and retry.")
+      alert(
+        "For some reasons we can't deconnect, please check your internet connexion and retry."
+      );
     }
-  }
+  };
 
+  const acessToSettings = (e) => {
+    handleClose(e)
+    navigate('/private/aqua-settings')
+    
+  }
   return (
     <div className="menu-user">
-    <Stack direction="row" spacing={2}>
-      <div>
-        <Button
-          ref={anchorRef}
-          id="composition-button"
-          aria-controls={open ? "composition-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-          variant="outlined"
-        >
-          Mon compte
-        </Button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          placement="bottom-start"
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom-start" ? "left top" : "left bottom",
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="composition-menu"
-                    aria-labelledby="composition-button"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    <MenuItem onClick={handleClose}>Mon Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>Mon compte</MenuItem>
-                    <MenuItem onClick={logOut}>se déconnecter</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
-    </Stack>
+      <Stack direction="row" spacing={2}>
+        <div>
+          <Button
+            ref={anchorRef}
+            id="composition-button"
+            aria-controls={open ? "composition-menu" : undefined}
+            aria-expanded={open ? "true" : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+            variant="outlined"
+          >
+            Mon compte
+          </Button>
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            placement="bottom-start"
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === "bottom-start" ? "left top" : "left bottom",
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList
+                      autoFocusItem={open}
+                      id="composition-menu"
+                      aria-labelledby="composition-button"
+                      onKeyDown={handleListKeyDown}
+                    >
+                      <MenuItem onClick={handleClose}>Mon compte</MenuItem>
+                      <MenuItem onClick={acessToSettings}>Paramètres Aquarium</MenuItem>
+                      <MenuItem onClick={logOut}>se déconnecter</MenuItem>
+                      
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
+        </div>
+      </Stack>
     </div>
   );
 }

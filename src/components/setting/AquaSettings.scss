@@ -1,0 +1,75 @@
+.title-edit-aqua{
+    margin-top: 50px;
+text-align: center;
+
+}
+
+
+.container-infos-aqua-edit{
+    position:absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-40%);
+    padding:30px;
+    @extend %centerColumns;
+    width: 500px;
+    height: auto;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #83a29f, #9cc1bd);
+    box-shadow:  8px 8px 16px #89a9a6,
+                 -8px -8px 16px #9bbfbc;
+color: black;
+button{
+    cursor: pointer;
+    @include btn;
+
+ padding:5px;
+}
+img{
+width: 100px;
+height: 100px;
+}
+
+}
+.container-edit-aqua{
+@extend %centerRows;
+margin-bottom: 25px;
+
+h3{
+    margin-right: 15px;
+}
+}
+.container-type-edit{
+@extend %centerColumns;
+margin-bottom: 30px;
+h3{
+    margin-bottom: 15px;
+}
+span{
+    color:blue;
+}
+li{
+    margin-bottom: 15px;
+}
+label{
+    margin-bottom: 10px;
+}
+input[type='radio']{
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+}
+
+.container-photo-edit{
+    @extend %centerColumns;
+position: relative;
+    width: 80%;
+height: 150px;
+
+label{
+    margin-bottom: 10px;
+}
+}
