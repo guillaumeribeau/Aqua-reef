@@ -1,5 +1,7 @@
 import {
   collection,
+  doc,
+  getDoc,
   limit,
   onSnapshot,
   orderBy,
@@ -8,15 +10,18 @@ import {
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import CardFish from "../allCardFish/CardFish";
+import RadialGraph from "../components/graphique/RadialGraph";
 import { UserContext } from "../context/UserContext";
 import { db } from "../firebase/firebaseConfig";
+import FishTable from "./table/FishTable";
 
 const MyPopulation = () => {
   const { currentUser } = useContext(UserContext);
   const [population, setPopulation] = useState([]);
   const [totalSizeFish, setTotalSizeFish] = useState([]);
+  const [volumeAqua, setVolumeAqua] = useState(0);
 
-  const volumeAqua = 10
+  
 
   useEffect(() => {
     // select a collection
@@ -33,14 +38,33 @@ const MyPopulation = () => {
       console.log(snapshot.docs);
       setPopulation(
         snapshot.docs.map((doc) => ({
-          ...doc.data().addCardInAquarium,
+          ...doc.data().fishCard,
           id: doc.id,
         }))
       );
     });
     return unsub;
   }, []);
-  console.log(population);
+ 
+  useEffect(()=>{
+    const refAquaInfos = doc(
+      db,
+      "users",
+      currentUser.uid,
+      "aquarium",
+      "infos-aqua"
+    );
+    const unsub = onSnapshot(
+      doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"),
+      (doc) => {
+      
+        setVolumeAqua(doc.data().volume);
+      }
+    );
+
+    return unsub;
+   
+  })
 
   useEffect(() => {
     getAllSizeOfFish();
@@ -55,12 +79,26 @@ const MyPopulation = () => {
     setTotalSizeFish(total);
   };
 
+ const resultPercentageBugdet = () => {
+    if (totalSizeFish === 0) {
+      let result = 0;
+      return result;
+    }
+    const result = totalSizeFish / volumeAqua;
+    return result;
+  };
+  const resultPercentage = resultPercentageBugdet();
+
   return (
+
+
+<>
+<FishTable/>
    <div className="population">
 
     <div className="container-infos-aqua">
-        <div>Votre aquarium fait {volumeAqua}</div>
-
+        <h3>Votre aquarium fait {volumeAqua} L</h3>
+ <RadialGraph dataRangeBudget={resultPercentage} />
 {totalSizeFish > volumeAqua && (
 
 <div>VOUS AVEZ DEPASSER LA POPULATION !!</div>
@@ -89,6 +127,7 @@ const MyPopulation = () => {
         })}
       </div>
     </div>
+    </>
   );
 };
 

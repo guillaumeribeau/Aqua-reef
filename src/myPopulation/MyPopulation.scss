@@ -2,3 +2,23 @@
     @extend %centerColumns;
     color: black;
 }
+
+.container-infos-aqua{
+@extend %centerColumns;
+width: 400px;
+height: auto;
+margin-bottom: 50px;
+border-radius: 50px;
+background: #0c0356;
+box-shadow: inset 20px 20px 30px #0a0349,
+            inset -20px -20px 30px #0e0363;
+text-align:center;
+color:$white-color;
+}
+.radar_score_container{
+
+    width:250px;
+    height:auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

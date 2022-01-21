@@ -68,6 +68,9 @@ export default function UserMenu() {
     navigate('/private/aqua-settings')
     
   }
+  const acessToDashBoard = (e) => {
+    navigate('/private/cardfish')
+  }
   return (
     <div className="menu-user">
       <Stack direction="row" spacing={2}>
@@ -107,6 +110,7 @@ export default function UserMenu() {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
+                      <MenuItem onClick={acessToDashBoard}>DashBoard</MenuItem>
                       <MenuItem onClick={handleClose}>Mon compte</MenuItem>
                       <MenuItem onClick={acessToSettings}>Paramètres Aquarium</MenuItem>
                       <MenuItem onClick={logOut}>se déconnecter</MenuItem>

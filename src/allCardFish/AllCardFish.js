@@ -16,6 +16,7 @@ import ScrollBtn from "../components/loader/ScollBtn";
 const AllCardFish = () => {
   const [newCardFish, setNewCardFish] = useState([]);
   const [displayForms, setDisplayForms] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
   
 
   const [rangeValue, setRangeValue] = useState(4);
@@ -55,6 +56,13 @@ const AllCardFish = () => {
   },[]);
 
 
+const searchByInput = (e) => {
+  setSearchInput(e.target.value.toLowerCase())
+  if (searchInput) {
+    setSelectedRadio(true)
+
+  }
+}
 
   return (
       <>
@@ -91,7 +99,10 @@ const AllCardFish = () => {
           })}
         </ul>
       </div>
-
+      <div className="search-card-fish">
+<label htmlFor="search">Recherche fiches poissons</label>
+<input onChange={searchByInput} type="text" name="search" id="search" />
+</div>
       <div className="cancel">
         {selectedRadio && (
           <button onClick={() => setSelectedRadio("")}>
@@ -100,7 +111,7 @@ const AllCardFish = () => {
         )}
       </div>
       {newCardFish
-        .filter((card) => card.volume.includes(selectedRadio))
+        .filter((card) => card.volume.includes(selectedRadio) && card.name.toLowerCase().includes(searchInput) || card.latin.toLowerCase().includes(searchInput))
       .slice(0, rangeValue)
         .map((card) => {
           return (
@@ -118,7 +129,7 @@ const AllCardFish = () => {
               description={card.description}
               newCardFish={newCardFish}
               setNewCardFish={setNewCardFish}
-              addFishText={true}
+              addFishButtonProps={true}
            
              
             />

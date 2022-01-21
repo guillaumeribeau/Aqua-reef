@@ -18,9 +18,10 @@ const CustomRadialBudget = (props) => {
         <tspan
           style={{
             fontWeight: 700,
-            fontSize: "26px",
-            fill: "#282d30",
+            fontSize: "36px",
+            fill: "#FFF",
             fontFamily: "Roboto",
+            marginBottom:'5px',
           }}
         >
           {`${(value * 100).toFixed(0)}%`}
@@ -31,7 +32,7 @@ const CustomRadialBudget = (props) => {
           style={{
             fontWeight: 500,
             fontSize: "16px",
-            fill: "#74798c",
+            fill: "#FFF",
             fontFamily: "Roboto",
           }}
         >
@@ -43,11 +44,11 @@ const CustomRadialBudget = (props) => {
           style={{
             fontWeight: 500,
             fontSize: "16px",
-            fill: "#74798c",
+            fill: "#FFF",
             fontFamily: "Roboto",
           }}
         >
-          Budget
+         Maximum
         </tspan>
       </text>
     </React.Fragment>

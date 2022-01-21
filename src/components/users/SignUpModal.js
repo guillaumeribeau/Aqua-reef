@@ -9,7 +9,7 @@ import WelcomeModals from "../welcome/WelcomeModals";
 export default function SignUpModal() {
   const { modalState, toggleModals, signUp } = useContext(UserContext);
   const { currentUser } = useContext(UserContext);
-  const [displayWelcomeModals,setDiplayWelcomeModals]=useState(true)
+  const [displayWelcomeModals,setDiplayWelcomeModals]=useState(false)
 
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ export default function SignUpModal() {
        console.log(cred);
       toggleModals("close");
       setDiplayWelcomeModals(true)
-     // navigate("/private/analyse");
+      navigate("/private/analyse");
     } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");

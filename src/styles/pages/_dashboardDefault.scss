@@ -3,12 +3,9 @@
 .container-dashboard-default {
   @extend %centerRows;
   justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 30px;
+   align-items: flex-start;
+padding-top: 30px;
   background-color: $background-navigation-dashboard;
-  //min-height: 800px;
-  height: auto;
-  min-width: 800px;
   animation: dashboard 1.1s ease-in-out;
 }
 @keyframes dashboard {
@@ -25,11 +22,11 @@
 .container-main-default {
   @extend %centerRows;
   background-color: $background-main-dashboard;
-  min-width: 900px;
-  min-height: 800px;
+  max-width: 1400px;
+  // min-width: 900px;
+  // min-height: 800px;
   border-radius: 20px;
   margin: 10px 30px 300px 50px;
   z-index: 2;
   padding: 30px;
 }
-

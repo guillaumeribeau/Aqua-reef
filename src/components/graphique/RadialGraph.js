@@ -9,20 +9,20 @@ import CustomRadialBudget from "./CustomRadialBudget";
  * @param {number(0..1)} dataRangeBudget - value of percentage
  */
 
-const RadialBudget = ({ dataRangeBudget }) => {
+const RadialGraph = ({ dataRangeBudget }) => {
   const data = [{ value: dataRangeBudget }, { value: 1 - dataRangeBudget }];
 
   return (
     <div className="radar_score_container">
-      <h2>Score</h2>
-      <ResponsiveContainer width="100%" height="80%">
+      <h3>indicateur de gestion de votre population</h3>
+ 
         <PieChart width={250} height={180}>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
             dataKey="value"
-            innerRadius={70}
+            innerRadius={60}
             outerRadius={80}
             startAngle={180}
             endAngle={-360}
@@ -45,13 +45,13 @@ const RadialBudget = ({ dataRangeBudget }) => {
             />
           </Pie>
         </PieChart>
-      </ResponsiveContainer>
+
     </div>
   );
 };
 
-export default RadialBudget;
+export default RadialGraph;
 
-RadialBudget.prototype = {
+RadialGraph.prototype = {
   dataRangeBudget: PropTypes.number.isRequired,
 };

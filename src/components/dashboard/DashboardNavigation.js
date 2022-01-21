@@ -45,6 +45,7 @@ const DashboardNavigation = () => {
 
   return (
     <>
+    {infosAqua && 
       <div className="container-dashboard-navigation ">
         <div className="title-header-dashboard">
           <h3>Bienvenue {currentUser.displayName}</h3>
@@ -108,7 +109,7 @@ const DashboardNavigation = () => {
           </div>
         </nav>
       </div>
-      
+}
     </>
   );
 };

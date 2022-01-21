@@ -27,32 +27,32 @@ const CardFish = ({
   description,
   newCardFish,
   card,
-  addFishText,
+  addFishButtonProps,
 }) => {
   const { currentUser } = useContext(UserContext);
 
   const [addCardInAquarium, setAddCardInAquarium] = useState([]);
   const [isclicked, setIsClicked] = useState(false);
-  const [addFishButton, setAddFishButton] = useState(addFishText);
+  const [addFishButton, setAddFishButton] = useState(addFishButtonProps);
 
   const addCardFishInMyAquarium = async () => {
     const fishCard = newCardFish.filter((cardPop) => card.id === cardPop.id);
-    setAddCardInAquarium(fishCard[0]);
-    await console.log(addCardInAquarium);
+
     await addDoc(collection(db, "users", currentUser.uid, "MyPopulation"), {
-      addCardInAquarium: addCardInAquarium,
+      fishCard: fishCard[0],
       time: serverTimestamp(),
     });
 
     setIsClicked(true);
     setTimeout(() => {
       setIsClicked(false);
-    }, 2000);
+    }, 1500);
   };
 
   const removeCardFish = async () => {
     await deleteDoc(doc(db, "users", currentUser.uid, "MyPopulation", card.id));
   };
+  console.log(addCardInAquarium);
 
   return (
     <>
@@ -67,7 +67,7 @@ const CardFish = ({
             <span>Ajouter ce poisson</span>
 
             <AddIcon
-              onClick={() => addCardFishInMyAquarium()}
+              onClick={addCardFishInMyAquarium}
               sx={{
                 fontSize: "40px",
                 marginRight: "5px",
@@ -107,9 +107,9 @@ const CardFish = ({
             <img src={photo} alt={alt} />
             <div className="legend-fish">
               <h2>Volume: {volume}</h2>
-              <h2>Age: {longevity}</h2><h2>Taille:{size} cm</h2>
+              <h2>Age: {longevity}</h2>
+              <h2>Taille:{size} cm</h2>
             </div>
-            
           </div>
           <div className="card-fish-back">
             <p>{description}</p>

@@ -2,11 +2,11 @@
 
 .container-dashboard-navigation {
     background-color: $background-navigation-dashboard;
-    width: 350px;
+   width:300px;
     height: 800px;
     margin-top: 10px;
     border-radius: 20px;
-    margin: 10px 30px 100px 30px;
+    margin: 10px 30px 10px 30px;
 
     @include boxShadowDashboardNav;
   }

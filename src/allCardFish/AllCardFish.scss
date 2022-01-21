@@ -143,6 +143,24 @@ input[type="range"] {
 .message-add-fish-ok {
   @extend %centerRows;
   height: 55px;
-  background-image: $background-header-dashboard;
+  border-radius: 10px;
+  background: #0c0356;
+  box-shadow: inset 20px 20px 30px #0a0349,
+              inset -20px -20px 30px #0e0363;
+  
   color: white;
+}
+
+
+.search-card-fish{
+  @extend %centerRows;
+  margin-top: 15px;
+
+label{
+  font-weight: bold;
+ margin-right: 10px;
+}
+input{
+  padding:7px;
+}
 }
