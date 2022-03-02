@@ -10,7 +10,7 @@ const {mobile,setMobile}= useContext(UserContext)
       {mobile && (
         <div className="mobile-nav">
           <MenuIcon
-            onClick={() => setMobile({...mobile, display:!mobile.display,menu:!mobile.menu})}
+            onClick={() => setMobile({...mobile, display:!mobile.display})}
             sx={{
               position: "absolute",
               top: "30px",

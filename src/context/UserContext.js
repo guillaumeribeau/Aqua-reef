@@ -71,14 +71,14 @@ export const UserContextProvider = ({ children }) => {
 
   // context du menu mobile
   const [mobile, setMobile] = useState({
-    menu:false,
+    hamburger:false,
     display:false,
   });
 
   useEffect(() => {
     if (window.innerWidth < 1000) {
       console.log("1000px ok ");
-      setMobile(!mobile.menu);
+      setMobile({...mobile,hamburger:!mobile.hamburger});
     }
   }, []);
 

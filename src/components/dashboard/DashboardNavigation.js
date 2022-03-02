@@ -51,7 +51,7 @@ const DashboardNavigation = () => {
     <>
         <div onClick={closeNav}className={mobile.display ? "fixed-container-modals" :""}>
           <div className={mobile.display ? "container-modals":""}></div>
-      <div onClick={closeNav} className={mobile.display&&mobile.menu ? "mobile":"container-dashboard-navigation-none"}>
+      <div onClick={closeNav} className={mobile.display&&mobile.hamburger ? "mobile":"container-dashboard-navigation"}>
         <div className="title-header-dashboard">
           <h3>Bienvenue {currentUser.displayName}</h3>
         </div>

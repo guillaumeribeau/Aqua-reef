@@ -7,11 +7,7 @@
   margin-top: 10px;
   border-radius: 20px;
   margin: 10px 30px 10px 30px;
-
   @include boxShadowDashboardNav;
-}
-.container-dashboard-navigation-none{
-  display: none;
 }
 
 .nav-dashboard {
@@ -75,30 +71,33 @@
   margin: 20px 10% 30px 10%;
 }
 
-
-
-  .mobile  {  
-    background-color: $background-navigation-dashboard;
-    width: 0px;
-    height: 800px;
-    margin-top: 10px;
-    border-radius: 20px;
-    margin: 10px 30px 10px 30px;
-    position: absolute;
-    top:125px;
-   left:10px;
-   height: auto;
-    margin-top: 10px;
-    border-radius: 20px;
-    margin: 0;
-animation: menuNav both 1s ease
+.mobile {
+  background-color: $background-navigation-dashboard;
+  width: 0px;
+  height: 800px;
+  margin-top: 10px;
+  border-radius: 20px;
+  margin: 10px 30px 10px 30px;
+  position: absolute;
+  top: 125px;
+  left: 10px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  margin: 0;
+  animation: menuNav both 1s ease;
 }
 @keyframes menuNav {
-  from{
-width: 0;
+  from {
+    width: 0;
   }
-  to{
-width: 300px;
+  to {
+    width: 300px;
   }
-  
+}
+
+@media (max-width: 1000px) {
+  .container-dashboard-navigation {
+    display: none;
+  }
 }
