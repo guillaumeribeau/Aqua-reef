@@ -52,7 +52,7 @@ const CardFish = ({
   const removeCardFish = async () => {
     await deleteDoc(doc(db, "users", currentUser.uid, "MyPopulation", card.id));
   };
-  console.log(addCardInAquarium);
+  
 
   return (
     <>

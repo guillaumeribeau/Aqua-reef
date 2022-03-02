@@ -46,7 +46,7 @@ export default function SignUpModal() {
        console.log(cred);
       toggleModals("close");
       setDiplayWelcomeModals(true)
-      navigate("/private/analyse");
+ 
     } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");

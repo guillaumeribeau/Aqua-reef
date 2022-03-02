@@ -27,7 +27,7 @@ import { db } from "../../firebase/firebaseConfig";
 
 const DashboardNavigation = () => {
   const [infosAqua, setInfosAqua] = useState([]);
-  const { currentUser } = useContext(UserContext);
+ const { currentUser, mobile, setMobile } = useContext(UserContext);
 
   // useEffect for Main picture
   useEffect(() => {
@@ -42,23 +42,30 @@ const DashboardNavigation = () => {
 
     return unsub;
   }, []);
+  const closeNav = () => {
+    setMobile({...mobile,menu:!mobile.menu,display:!mobile.display})
+    
+  }
 
   return (
     <>
-    {infosAqua && 
-      <div className="container-dashboard-navigation ">
+        <div onClick={closeNav}className={mobile.display ? "fixed-container-modals" :""}>
+          <div className={mobile.display ? "container-modals":""}></div>
+      <div onClick={closeNav} className={mobile.display&&mobile.menu ? "mobile":"container-dashboard-navigation-none"}>
         <div className="title-header-dashboard">
           <h3>Bienvenue {currentUser.displayName}</h3>
         </div>
         <div className="header-dashboard">
-          <img src={infosAqua.url} alt="logo de aqua gest reef" />
+          <img src={infosAqua && infosAqua.url} alt="logo de aqua gest reef" />
         </div>
 
         <div className="legend-header-dashboard">
           Votre Aquarium
-          <span className="title-aqua">{infosAqua.name}</span>
-          <span className="title-aqua">{infosAqua.volume}L</span> 
-          <span className="title-aqua">{infosAqua.selectedRadio}</span>
+          <span className="title-aqua">{infosAqua && infosAqua.name}</span>
+          <span className="title-aqua">{infosAqua && infosAqua.volume}L</span>
+          <span className="title-aqua">
+            {infosAqua && infosAqua.selectedRadio}
+          </span>
         </div>
         <nav className="nav-dashboard">
           <div className="link-nav">
@@ -109,7 +116,7 @@ const DashboardNavigation = () => {
           </div>
         </nav>
       </div>
-}
+      </div>
     </>
   );
 };

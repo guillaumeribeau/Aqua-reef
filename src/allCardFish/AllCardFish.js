@@ -19,7 +19,7 @@ const AllCardFish = () => {
   const [searchInput, setSearchInput] = useState('');
   
 
-  const [rangeValue, setRangeValue] = useState(4);
+  const [rangeValue, setRangeValue] = useState(6);
   const [selectedRadio, setSelectedRadio] = useState("");
   const radios = ["100L", "150L", "300L", "500L"];
  
@@ -38,24 +38,11 @@ const AllCardFish = () => {
     return unsub;
   }, []);
 
-  // permet d'afficher plus de poisson au Scoll
-  useEffect(() => {
-    function watchScroll() {
-      window.addEventListener("scroll", () => {
-        const { scrollHeight, scrollTop, clientHeight } =
-          document.documentElement;
+ 
 
-        if (clientHeight + scrollTop >= scrollHeight - 20) {
-          console.log("scroll ok");
-         
-          setRangeValue(rangeValue + 3);
-        }
-      });
-    }
-    watchScroll();
-  },[]);
-
-
+const loadMore = () => {
+  setRangeValue(rangeValue + 3);
+}
 const searchByInput = (e) => {
   setSearchInput(e.target.value.toLowerCase())
   if (searchInput) {
@@ -63,6 +50,7 @@ const searchByInput = (e) => {
 
   }
 }
+
 
   return (
       <>
@@ -73,7 +61,7 @@ const searchByInput = (e) => {
       <div className="sort-container">
         <input
           type="range"
-          min="2"
+          min="4"
           max={newCardFish.length}
           value={rangeValue}
           onChange={(e) => setRangeValue(e.target.value)}
@@ -137,8 +125,15 @@ const searchByInput = (e) => {
         })}
       
 
-   <ScrollBtn bottomPosition={-120}/>
-    
+
+  {newCardFish.length <= rangeValue ? (
+    <button style={{position:'absolute', bottom:'-80px'}} onClick={loadMore}>plus de poissons à venir</button>
+    ):(
+      
+      <button style={{position:'absolute', bottom:'-80px'}} onClick={loadMore}>charger plus</button> 
+   
+
+  )}
     </div>
     
    </>

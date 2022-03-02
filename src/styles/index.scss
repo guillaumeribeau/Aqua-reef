@@ -11,14 +11,17 @@
 @import "../allCardFish/AllCardFish";
 @import "../allCardFish/createNewCardFish";
 @import "../myPopulation/MyPopulation.scss";
+@import "../myPopulation/table/FishTable.scss";
 @import "../components/welcome/WelcomeModals.scss";
+
 
 @import "../components/loader/LoaderPoint.scss";
 @import "../components/users/sign";
 @import "../components/layout/navigation";
 @import "../components/NewProjectAqua/newProjectAqua";
 @import "../components/Setup/setup";
-@import "../components/dashboard/DashBoardNavigation.scss";
+@import "../components/dashboard/DashboardNavigation.scss";
+@import "../components/dashboard/MobileNav.scss";
 @import "../components/setting/AquaSettings.scss";
 
 

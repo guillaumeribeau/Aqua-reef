@@ -1,4 +1,10 @@
-import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState, useRef } from "react";
 import { useContext } from "react";
@@ -45,7 +51,7 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
     await uploadBytes(storageRef, file);
     // permet de stocker url dans firestore
     await getDownloadURL(storageRef).then((url) => {
-      setDoc(doc(db, "users", currentUser.uid,"aquarium","infos-aqua"), {
+      setDoc(doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"), {
         url: url,
         time: serverTimestamp(),
         name: name,
@@ -54,7 +60,7 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
       });
     });
     e.target.reset();
-    navigate("/private/dashboard");
+    navigate("/private/cardFish");
   };
 
   const closeModals = () => {

@@ -2,6 +2,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState, useRef } from "react";
 import Addphoto from "../components/dashboard/Addphoto";
+import CloseIcon from '@mui/icons-material/Close';
 import { db, storage } from "../firebase/firebaseConfig";
 
 const CreateNewCardFish = ({setDisplayForms}) => {
@@ -50,9 +51,11 @@ e.target.reset()
   }
 
   return (
-    <div  onClick={closeModals} className="fixed-container-modals">
-      <div className="container-modals"></div>
+    <div  className="fixed-container-modals">
+     
+      <div className="container-modals"> </div>
     <form  onSubmit={handleSubmitnewFish} className="create-card-fish-container">
+    <CloseIcon sx={{position:'absolute', right:'25px',top:'15px', fontSize:'30px', cursor:'pointer'}} onClick={closeModals}></CloseIcon>
       <label htmlFor="name">Nom Communs</label>
       <input
         onChange={(e) => setName(e.target.value)}

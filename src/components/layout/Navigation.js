@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logotemporaire.png";
+
 import UserMenu from "../users/UserMenu";
 
 /**
@@ -11,6 +12,7 @@ import UserMenu from "../users/UserMenu";
 const Navigation = () => {
   return (
     <div className="header">
+   
       <nav className="nav-header">
         <Link to="/">Home</Link>
         <Link to="/blog">Blog</Link>

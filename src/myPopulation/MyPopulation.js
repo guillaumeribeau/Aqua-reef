@@ -1,5 +1,6 @@
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   limit,
@@ -21,7 +22,7 @@ const MyPopulation = () => {
   const [totalSizeFish, setTotalSizeFish] = useState([]);
   const [volumeAqua, setVolumeAqua] = useState(0);
 
-  
+  const [oneCardDisplay, setOneCardDisplay] = useState([]);
 
   useEffect(() => {
     // select a collection
@@ -45,8 +46,8 @@ const MyPopulation = () => {
     });
     return unsub;
   }, []);
- 
-  useEffect(()=>{
+
+  useEffect(() => {
     const refAquaInfos = doc(
       db,
       "users",
@@ -57,19 +58,18 @@ const MyPopulation = () => {
     const unsub = onSnapshot(
       doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"),
       (doc) => {
-      
         setVolumeAqua(doc.data().volume);
       }
     );
 
     return unsub;
-   
-  })
+  });
+
+  // get data with firebase
 
   useEffect(() => {
     getAllSizeOfFish();
   }, [population]);
-
 
   // recupères le total des tailles des poissons de l'aqua
   const getAllSizeOfFish = () => {
@@ -79,7 +79,7 @@ const MyPopulation = () => {
     setTotalSizeFish(total);
   };
 
- const resultPercentageBugdet = () => {
+  const resultPercentageBugdet = () => {
     if (totalSizeFish === 0) {
       let result = 0;
       return result;
@@ -89,45 +89,75 @@ const MyPopulation = () => {
   };
   const resultPercentage = resultPercentageBugdet();
 
+  // delete row fish in tableFish
+  const removeRowFish=(id)=>{
+    deleteDoc(doc(db, "users", currentUser.uid, "MyPopulation", id));
+}
+
+const displayCardFishDetails = (id) => {
+const cardFishFiltered= population.filter((card)=> id === card.id)
+setOneCardDisplay({...oneCardDisplay, cardFishFiltered }) 
+
+
+}
+
+console.log(oneCardDisplay);
+    
+ 
+
   return (
-
-
-<>
-<FishTable/>
-   <div className="population">
-
-    <div className="container-infos-aqua">
-        <h3>Votre aquarium fait {volumeAqua} L</h3>
- <RadialGraph dataRangeBudget={resultPercentage} />
-{totalSizeFish > volumeAqua && (
-
-<div>VOUS AVEZ DEPASSER LA POPULATION !!</div>
-
-)}
-
-    </div>
-      <div className="container-card-fish">
-        {population.map((card) => {
-          return (
-            <CardFish
-              card={card}
-              key={card.id}
-              id={card.id}
-              name={card.name}
-              latin={card.latin}
-              photo={card.url}
-              alt={card.alt}
-              longevity={card.longevity}
-              volume={card.volume}
-              description={card.description}
-              addFishText={false}
-              size={card.size}
-            />
-          );
-        })}
+    <div className="container-population">
+      <div className="population">
+        <div className="container-infos-aqua">
+          <h3>Votre aquarium fait {volumeAqua} L</h3>
+          <RadialGraph dataRangeBudget={resultPercentage} />
+          {totalSizeFish > volumeAqua && (
+            <div>VOUS AVEZ DEPASSER LA POPULATION !!</div>
+          )}
+        </div>
+        <div className="container-table">
+         {/* {oneCardDisplay && oneCardDisplay[0].map((card) => {
+            return (
+              <CardFish
+                card={card}
+                key={card.id}
+                id={card.id}
+                name={card.name}
+                latin={card.latin}
+                photo={card.url}
+                alt={card.alt}
+                longevity={card.longevity}
+                volume={card.volume}
+                description={card.description}
+                addFishText={false}
+                size={card.size}
+              />
+            );
+          })} */}
+          <FishTable tableData={population} removeRowFish={removeRowFish} displayCardFishDetails={displayCardFishDetails}/>
+        </div>
+        <div className="container-card-fish">
+          {population.map((card) => {
+            return (
+              <CardFish
+                card={card}
+                key={card.id}
+                id={card.id}
+                name={card.name}
+                latin={card.latin}
+                photo={card.url}
+                alt={card.alt}
+                longevity={card.longevity}
+                volume={card.volume}
+                description={card.description}
+                addFishText={false}
+                size={card.size}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
-    </>
   );
 };
 

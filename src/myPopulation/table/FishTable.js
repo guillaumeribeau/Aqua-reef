@@ -1,47 +1,84 @@
+import React, { useContext, useMemo } from "react";
 import {
-    collection,
-    doc,
-    getDoc,
-    limit,
-    onSnapshot,
-    orderBy,
-    query,
-  } from "firebase/firestore";
-  import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../context/UserContext";
+  useGlobalFilter,
+  useSortBy,
+  useTable,
+  usePagination,
+} from "react-table";
+import TableLayout from "./TableLayout";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
-  
+import { UserContext } from "../../context/UserContext";
+export const FishTable = ({ tableData, removeRowFish,displayCardFishDetails }) => {
+  const currentUser = useContext(UserContext);
+  const [columns, data] = useMemo(() => {
+    const columns = [
+      {
+        Header: "Noms communs",
+        accessor: "name",
+      },
+      {
+        Header: "noms Latin",
+        accessor: "latin",
+      },
+      {
+        Header: "Volume",
+        accessor: "volume",
+      },
+      {
+        Header: "Taille",
+        accessor: "size",
+      },
+      {
+        Header: "Longévité",
+        accessor: "longevity",
+      },
+      {
+        Header: "Image",
+        accessor: "url",
+        maxWidth: 70,
+        minWidth: 70,
+        Cell: ({ cell: { value } }) => <img src={value} width={60} />,
+      },
+      {
+        Header: "Supprimer",
+        accessor: "id",
+       
+        Cell: ({ cell: { value } }) => (
+          <div className="container-delete-table">
+          <DeleteIcon
+            onClick={() => removeRowFish(value)}
+            sx={{
+              fontSize: "40px",
+              marginRight: "5px",
+              cursor: "pointer",
+              "&:hover": {
+                color: "blue",
+                fontSize: "45px",
+              },
+            }}
+          />
+          <span onClick={()=> displayCardFishDetails(value)}>Détails</span>
+          </div>
+        ),
+      },
+    ];
+    return [columns, tableData];
+  }, [tableData]);
 
-  
-import { TableInstance } from "./TableInstance";
+  const tableinstance = useTable(
+    { columns, data, initialState: { pageIndex: 0, pageSize: 5 } },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
 
-const FishTable = () => {
-  const [data, setData] = useState([]);
-  const {currentUser}=useContext(UserContext)
-  // get data with firebase
-  useEffect(() => {
-    // select a collection
-    const collectionRef = collection(
-      db,
-      "users",
-      currentUser.uid,
-      "MyPopulation"
-    );
-    // filter method firebase
-    const q = query(collectionRef, orderBy("time", "desc"), limit(1000));
-    console.log(q);
-    const unsub = onSnapshot(q, (snapshot) => {
-      console.log(snapshot.docs);
-      setData(
-        snapshot.docs.map((doc) => ({
-          ...doc.data().fishCard,
-          id: doc.id,
-        }))
-      );
-    });
-    return unsub;
-  }, []);
+  const removeCardFish = (id) => {
+    deleteDoc(doc(db, "users", currentUser.uid, `MyPopulation/${id}`));
+  };
 
-  return <TableInstance tableData={data} />;
+  return <TableLayout {...tableinstance} />;
 };
+
 export default FishTable;
