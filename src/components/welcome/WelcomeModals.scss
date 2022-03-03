@@ -50,6 +50,12 @@
   }
 }
 
+@media screen and (max-width:1000px) {
+  .welcome-form{
+    width: 70%;
+  }
+}
+
 @keyframes containerArrowAnim {
   from {
     opacity: 0;

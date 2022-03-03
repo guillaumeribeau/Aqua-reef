@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebaseConfig";
 
 const HomeNav = () => {
-
-    const { toggleModals } = useContext(UserContext);
-    return (
-        <>
-        <div className="container-btn-home">
+  const { toggleModals } = useContext(UserContext);
+  return (
+    <>
+      <div className="container-btn-home">
         <Link
           onClick={() => toggleModals("signUp")}
           className="btn-home"
@@ -25,12 +24,10 @@ const HomeNav = () => {
         >
           Se connecter
         </Link>
-        <Link className="btn-home" to="/private/analyse">
-          dashboard
-        </Link>
+        
       </div>
     </>
-    );
+  );
 };
 
 export default HomeNav;

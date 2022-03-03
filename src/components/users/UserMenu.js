@@ -72,7 +72,7 @@ export default function UserMenu() {
     navigate('/private/cardfish')
   }
   return (
-    <div className="menu-user">
+    <div style={{marginLeft:'30px'}} className="menu-user">
       <Stack direction="row" spacing={2}>
         <div>
           <Button

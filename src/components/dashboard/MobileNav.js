@@ -3,23 +3,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { UserContext } from "../../context/UserContext";
 
 const MobileNav = () => {
-const {mobile,setMobile}= useContext(UserContext)
+  const { mobile, setMobile } = useContext(UserContext);
 
   return (
     <>
       {mobile && (
-        <div className="mobile-nav">
-          <MenuIcon
-            onClick={() => setMobile({...mobile, display:!mobile.display})}
-            sx={{
-              position: "absolute",
-              top: "30px",
-              cursor: "pointer",
-              color: "white",
-              fontSize: "45px",
-            }}
-          />
-        </div>
+        <MenuIcon
+          onClick={() => setMobile({ ...mobile, display: !mobile.display })}
+          sx={{
+           marginLeft:'3%',
+            cursor: "pointer",
+            color: "white",
+            fontSize: "45px",
+            zIndex:'25',
+          }}
+        />
       )}
     </>
   );

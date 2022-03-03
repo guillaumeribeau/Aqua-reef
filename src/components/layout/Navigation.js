@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 import logo from "../../images/logotemporaire.png";
+import MobileNav from "../dashboard/MobileNav";
+
 
 import UserMenu from "../users/UserMenu";
 
@@ -10,15 +13,12 @@ import UserMenu from "../users/UserMenu";
  */
 
 const Navigation = () => {
+  const { mobile, setMobile } = useContext(UserContext);
+
+  
   return (
     <div className="header">
-   
-      <nav className="nav-header">
-        <Link to="/">Home</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
-
+       {mobile.hamburger &&   <MobileNav mobile={mobile} setMobile={setMobile} />}
       <UserMenu />
     </div>
   );

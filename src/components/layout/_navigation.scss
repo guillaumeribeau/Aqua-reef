@@ -1,12 +1,9 @@
 .header {
   @extend %centerRows;
   justify-content: space-between;
-  padding-right: 50px;
-  padding-left: 70px;
-  height: 100px;
-
-  
-  background: #0c0356;
+  padding-right: 3%;
+ height:10vh;
+background: #0c0356;
   box-shadow: inset 20px 20px 30px #0a0349,
               inset -20px -20px 30px #0e0363;
   

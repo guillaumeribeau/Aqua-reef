@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1c4b5099.chunk.css",
+    "main.js": "/static/js/main.4b044c6a.chunk.js",
+    "main.js.map": "/static/js/main.4b044c6a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ea929cf5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ea929cf5.js.map",
+    "static/js/2.47316888.chunk.js": "/static/js/2.47316888.chunk.js",
+    "static/js/2.47316888.chunk.js.map": "/static/js/2.47316888.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.1c4b5099.chunk.css.map": "/static/css/main.1c4b5099.chunk.css.map",
+    "static/js/2.47316888.chunk.js.LICENSE.txt": "/static/js/2.47316888.chunk.js.LICENSE.txt",
+    "static/media/aquariumsetup.b306ae64.png": "/static/media/aquariumsetup.b306ae64.png",
+    "static/media/brassage.aca6eecb.png": "/static/media/brassage.aca6eecb.png",
+    "static/media/chauffage.f7873d5f.png": "/static/media/chauffage.f7873d5f.png",
+    "static/media/doseuse.0358fd98.png": "/static/media/doseuse.0358fd98.png",
+    "static/media/eclairage.223646f5.png": "/static/media/eclairage.223646f5.png",
+    "static/media/ecumeur.0e9b8fa0.png": "/static/media/ecumeur.0e9b8fa0.png",
+    "static/media/groupe-froid.90a5a990.png": "/static/media/groupe-froid.90a5a990.png",
+    "static/media/logotemporaire.f5fe7ff3.png": "/static/media/logotemporaire.f5fe7ff3.png",
+    "static/media/osmolateur.dc386c46.png": "/static/media/osmolateur.dc386c46.png",
+    "static/media/osmoseur.81d04833.png": "/static/media/osmoseur.81d04833.png",
+    "static/media/refractometre.bfb4e6a5.png": "/static/media/refractometre.bfb4e6a5.png",
+    "static/media/remonte.a856c1fb.png": "/static/media/remonte.a856c1fb.png",
+    "static/media/roches.0f9b4d63.png": "/static/media/roches.0f9b4d63.png",
+    "static/media/sea-bg-4.276db34d.jpg": "/static/media/sea-bg-4.276db34d.jpg",
+    "static/media/sel.97cd950a.png": "/static/media/sel.97cd950a.png",
+    "static/media/sterilisateur.df3ecf5c.png": "/static/media/sterilisateur.df3ecf5c.png",
+    "static/media/test.bbc8d5e9.png": "/static/media/test.bbc8d5e9.png",
+    "static/media/ventilateur.78a850ff.png": "/static/media/ventilateur.78a850ff.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea929cf5.js",
+    "static/js/2.47316888.chunk.js",
+    "static/css/main.1c4b5099.chunk.css",
+    "static/js/main.4b044c6a.chunk.js"
+  ]
+}

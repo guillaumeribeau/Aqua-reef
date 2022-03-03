@@ -27,7 +27,7 @@ import { db } from "../../firebase/firebaseConfig";
 
 const DashboardNavigation = () => {
   const [infosAqua, setInfosAqua] = useState([]);
- const { currentUser, mobile, setMobile } = useContext(UserContext);
+  const { currentUser, mobile, setMobile } = useContext(UserContext);
 
   // useEffect for Main picture
   useEffect(() => {
@@ -42,80 +42,100 @@ const DashboardNavigation = () => {
 
     return unsub;
   }, []);
+
+  
   const closeNav = () => {
-    setMobile({...mobile,menu:!mobile.menu,display:!mobile.display})
-    
-  }
+    if (mobile.hamburger) {
+      setMobile({
+        ...mobile,
+        menu: !mobile.hamburger,
+        display: !mobile.display,
+      });
+    }
+  };
 
   return (
     <>
-        <div onClick={closeNav}className={mobile.display ? "fixed-container-modals" :""}>
-          <div className={mobile.display ? "container-modals":""}></div>
-      <div onClick={closeNav} className={mobile.display&&mobile.hamburger ? "mobile":"container-dashboard-navigation"}>
-        <div className="title-header-dashboard">
-          <h3>Bienvenue {currentUser.displayName}</h3>
-        </div>
-        <div className="header-dashboard">
-          <img src={infosAqua && infosAqua.url} alt="logo de aqua gest reef" />
-        </div>
+      <div
+        onClick={closeNav}
+        className={mobile.display ? "fixed-container-modals" : ""}
+      >
+        <div className={mobile.display ? "container-modals" : ""}></div>
+        <div
+          onClick={closeNav}
+          className={
+            mobile.display && mobile.hamburger
+              ? "mobile"
+              : "dashboard-navigation"
+          }
+        >
+          <div className="title-header-dashboard">
+            <h3>Bienvenue {currentUser.displayName}</h3>
+          </div>
+          <div className="header-dashboard">
+            <img
+              src={infosAqua && infosAqua.url}
+              alt="logo de aqua gest reef"
+            />
+          </div>
 
-        <div className="legend-header-dashboard">
-          Votre Aquarium
-          <span className="title-aqua">{infosAqua && infosAqua.name}</span>
-          <span className="title-aqua">{infosAqua && infosAqua.volume}L</span>
-          <span className="title-aqua">
-            {infosAqua && infosAqua.selectedRadio}
-          </span>
+          <div className="legend-header-dashboard">
+            Votre Aquarium
+            <span className="title-aqua">{infosAqua && infosAqua.name}</span>
+            <span className="title-aqua">{infosAqua && infosAqua.volume}L</span>
+            <span className="title-aqua">
+              {infosAqua && infosAqua.selectedRadio}
+            </span>
+          </div>
+          <nav className="nav-dashboard">
+            <div className="link-nav">
+              <InsightsIcon />
+              <Link className="link-nav-dashboard" to="/private/analyse">
+                Analyse de l'eau
+              </Link>
+            </div>
+            <div className="link-nav">
+              <SetMealIcon />
+              <Link
+                className="link-nav-dashboard"
+                activeClassName="active-link-nav-dashboard"
+                to="/private/cardFish"
+              >
+                Les fiches poissons
+              </Link>
+            </div>
+            <div className="link-nav">
+              <FavoriteBorderIcon />
+              <Link
+                className="link-nav-dashboard"
+                activeClassName="active-link-nav-dashboard"
+                to="/private/mypopulation"
+              >
+                Ma population
+              </Link>
+            </div>
+            <div className="link-nav">
+              <CreateNewFolderIcon />
+              <Link
+                className="link-nav-dashboard"
+                activeClassName="active-link-nav-dashboard"
+                to="/private/createSetup"
+              >
+                Ajoutez un aquarium
+              </Link>
+            </div>
+            <div className="link-nav">
+              <SaveIcon />
+              <Link
+                className="link-nav-dashboard"
+                activeClassName="active-link-nav-dashboard"
+                to="/private/setupRegister"
+              >
+                Mes Setups Enregistrer
+              </Link>
+            </div>
+          </nav>
         </div>
-        <nav className="nav-dashboard">
-          <div className="link-nav">
-            <InsightsIcon />
-            <Link className="link-nav-dashboard" to="/private/analyse">
-              Analyse de l'eau
-            </Link>
-          </div>
-          <div className="link-nav">
-            <SetMealIcon />
-            <Link
-              className="link-nav-dashboard"
-              activeClassName="active-link-nav-dashboard"
-              to="/private/cardFish"
-            >
-              Les fiches poissons
-            </Link>
-          </div>
-          <div className="link-nav">
-            <FavoriteBorderIcon />
-            <Link
-              className="link-nav-dashboard"
-              activeClassName="active-link-nav-dashboard"
-              to="/private/mypopulation"
-            >
-              Ma population
-            </Link>
-          </div>
-          <div className="link-nav">
-            <CreateNewFolderIcon />
-            <Link
-              className="link-nav-dashboard"
-              activeClassName="active-link-nav-dashboard"
-              to="/private/createSetup"
-            >
-              Ajoutez un aquarium
-            </Link>
-          </div>
-          <div className="link-nav">
-            <SaveIcon />
-            <Link
-              className="link-nav-dashboard"
-              activeClassName="active-link-nav-dashboard"
-              to="/private/setupRegister"
-            >
-              Mes Setups Enregistrer
-            </Link>
-          </div>
-        </nav>
-      </div>
       </div>
     </>
   );

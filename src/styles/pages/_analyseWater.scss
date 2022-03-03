@@ -1,12 +1,8 @@
-.analyse-water-container{
-@extend %centerRows;
-flex-wrap: wrap;
-}
 
 // contains all block for slider's measure
 .container-all-measure {
   background-color: $white-color;
-  width: 600px;
+  width: 60%;
   height: auto;
   padding: 15px;
   color: $black-color;
@@ -24,6 +20,8 @@ flex-wrap: wrap;
     margin-bottom: 25px;
   }
 }
+
+
 
 .container-slider-measure {
   @extend %centerRows;
@@ -59,8 +57,8 @@ flex-wrap: wrap;
 // display a last measure
 .container-results-measure {
   background-color: $white-color;
-  width: 350px;
-  height: auto;
+  width: 30%;
+  height: 491px;
   margin-right: 200px;
   padding: 15px;
   color: $black-color;
@@ -98,7 +96,7 @@ flex-wrap: wrap;
   position: relative;
 @include boxshadow;
 padding: 25px;
-width: 600px;
+width: 80%;
 height: 300px;
 ;
 margin-top: 30px;
@@ -111,4 +109,29 @@ font-size: medium;
 display: flex;
 margin-bottom: 10px;
 justify-content: center;
+}
+
+@media (max-width:1450px) {
+  .container-all-measure{
+    margin: 20px 0px 0px 0px;
+    width: 95%;
+    height: auto;
+  }
+  
+.container-slider-measure {
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.first-measure {
+  margin-right: 0px;
+}
+
+  .container-results-measure{
+    width: 95%;
+    height: auto;
+  }
+  .container-graphique{
+    width: 95%;
+  }
 }

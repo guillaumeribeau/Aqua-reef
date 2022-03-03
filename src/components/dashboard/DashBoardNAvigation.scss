@@ -1,6 +1,6 @@
 // dashboard navigation
 
-.container-dashboard-navigation {
+.dashboard-navigation {
   background-color: $background-navigation-dashboard;
   min-width: 300px;
   height: 800px;
@@ -74,14 +74,14 @@
 .mobile {
   background-color: $background-navigation-dashboard;
   width: 0px;
-  height: 800px;
+ height: 60vh;
   margin-top: 10px;
   border-radius: 20px;
   margin: 10px 30px 10px 30px;
   position: absolute;
-  top: 125px;
-  left: 10px;
-  height: auto;
+  top: 25px;
+  left: 0px;
+
   margin-top: 10px;
   border-radius: 20px;
   margin: 0;
@@ -92,12 +92,15 @@
     width: 0;
   }
   to {
-    width: 300px;
+    width: 60%;
   }
 }
 
 @media (max-width: 1000px) {
-  .container-dashboard-navigation {
+  .dashboard-navigation {
     display: none;
   }
+ .header-dashboard{
+   height: 150px;
+ }
 }

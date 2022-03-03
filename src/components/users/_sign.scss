@@ -25,6 +25,16 @@ padding: 10px;
 
 
 }
+
+@media screen and (max-width:1000px) {
+   .modals{
+
+       width: 70%;
+   }
+}
+
+
+
 .modal-title{
     text-align: center;
     font-size: large;
