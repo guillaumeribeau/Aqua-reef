@@ -1,12 +1,14 @@
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10000;
   @extend %centerRows;
   justify-content: space-between;
   padding-right: 3%;
- height:10vh;
-background: #0c0356;
-  box-shadow: inset 20px 20px 30px #0a0349,
-              inset -20px -20px 30px #0e0363;
-  
+  height: 10vh;
+  background: #0c0356;
+  box-shadow: inset 20px 20px 30px #0a0349, inset -20px -20px 30px #0e0363;
 
   img {
     height: 100px;

@@ -1,16 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
-    collection,
-    doc,
-    getDoc,
-    getDocs,
-    limit,
-    onSnapshot,
-    orderBy,
-    query,
-  } from "firebase/firestore";
-  import { auth, db } from "../../firebase/firebaseConfig";
-import {ArrowColor, tempColor, phColor,khColor,densityColor,NH4Color,NO2Color,NO3Color,PoColor,caColor,mgColor } from "./ConstantColors";
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { auth, db } from "../../firebase/firebaseConfig";
+import {
+  ArrowColor,
+  tempColor,
+  phColor,
+  khColor,
+  densityColor,
+  NH4Color,
+  NO2Color,
+  NO3Color,
+  PoColor,
+  caColor,
+  mgColor,
+} from "./ConstantColors";
 import {
   LineChart,
   Line,
@@ -21,8 +33,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
-import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
+import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 
 import { UserContext } from "../../context/UserContext";
 
@@ -43,7 +55,7 @@ const LineBar = () => {
   const [measureData, setMeasureData] = useState([]);
   const [currentData, setCurrentData] = useState(0);
   const length = ArrayOfMeasureProperties.length;
-  const {currentUser}= useContext(UserContext)
+  const { currentUser } = useContext(UserContext);
 
   const prevMeasure = () => {
     setCurrentData(currentData === 0 ? length - 1 : currentData - 1);
@@ -53,9 +65,6 @@ const LineBar = () => {
     setCurrentData(currentData === length - 1 ? 0 : currentData + 1);
   };
 
-  console.log(currentData);
-
-  
   useEffect(() => {
     // select a collection
     const collectionRef = collection(db, "users", currentUser.uid, "measures");
@@ -72,48 +81,66 @@ const LineBar = () => {
   }, []);
 
   return (
-    
-      <>
-      <div className='container-graphique active'>
-        <span className='title-graphique'>Graphique des relevés</span>
-       <LineChart
-         width={500}
-         height={200}
-        data={measureData}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        {/* <Line
+    <>
+      <div className="container-graphique active">
+        <span className="title-graphique">Graphique des relevés</span>
+        <ResponsiveContainer height="80%">
+          <LineChart
+            data={measureData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            {/* <Line
           type="monotone"
           dataKey="kh"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         /> */}
-        {ArrayOfMeasureProperties.map(
-          (slide, index) =>
-            index === currentData && (
-              <Line
-              isAnimationActive={true}
-                type="monotone"
-                dataKey={slide.dataKey}
-                stroke={slide.stroke}
-              />
-            )
-        )}
-      </LineChart>
-  <ArrowCircleLeftOutlinedIcon  sx={{fontSize:'34px', cursor:'pointer', color: ArrowColor, position:'absolute',left:'32px',bottom:'15px' }} onClick={prevMeasure}/>
-  <ArrowCircleRightOutlinedIcon sx={{fontSize:'34px', cursor:'pointer',color: ArrowColor, position:'absolute',right:'32px',bottom:'15px' }}onClick={nextMeasure}/>
-  
- </div>
+            {ArrayOfMeasureProperties.map(
+              (slide, index) =>
+                index === currentData && (
+                  <Line
+                    isAnimationActive={true}
+                    type="monotone"
+                    dataKey={slide.dataKey}
+                    stroke={slide.stroke}
+                  />
+                )
+            )}
+          </LineChart>
+        </ResponsiveContainer>
+        <ArrowCircleLeftOutlinedIcon
+          sx={{
+            fontSize: "34px",
+            cursor: "pointer",
+            color: ArrowColor,
+            position: "absolute",
+            left: "32px",
+            bottom: "15px",
+          }}
+          onClick={prevMeasure}
+        />
+        <ArrowCircleRightOutlinedIcon
+          sx={{
+            fontSize: "34px",
+            cursor: "pointer",
+            color: ArrowColor,
+            position: "absolute",
+            right: "32px",
+            bottom: "15px",
+          }}
+          onClick={nextMeasure}
+        />
+      </div>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import Navigation from "../components/layout/Navigation";
 import DashboardNavigation from "../components/dashboard/DashboardNavigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 /**
  * @component
@@ -8,7 +9,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
  */
 
 const DashboardDefault = ({ childrenCards }) => {
-  
+  const {mobile}= useContext(UserContext)
 
   return (
     <>
@@ -16,7 +17,7 @@ const DashboardDefault = ({ childrenCards }) => {
       <div className="dashboard">
         <DashboardNavigation />
 
-        <div className="dashboard-main">{childrenCards}</div>
+        <div className={mobile.display ? "dashboard-main-no-scroll":"dashboard-main"}>{childrenCards}</div>
       </div>
     </>
   );

@@ -14,6 +14,7 @@ import { db, storage } from "../../firebase/firebaseConfig";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowBack from "@mui/icons-material/ArrowBack";
+import exampleAqua from '../../images/aquariumsetup.png';
 
 const customStyleArrow = {
   fontSize: "75px",
@@ -22,7 +23,7 @@ const customStyleArrow = {
 };
 
 const WelcomeModals = ({ setDiplayWelcomeModals }) => {
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState('');
   const [name, setName] = useState("");
   const [volume, setVolume] = useState("");
   const [selectedRadio, setSelectedRadio] = useState("");
@@ -43,12 +44,13 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmitnewFish = async (e) => {
+  const handleSubmitnewAqua = async (e) => {
     e.preventDefault();
 
     const storageRef = ref(storage, `/images/fishCardImages/${file.name}`);
-    console.log(storageRef);
     await uploadBytes(storageRef, file);
+   
+   
     // permet de stocker url dans firestore
     await getDownloadURL(storageRef).then((url) => {
       setDoc(doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"), {
@@ -60,7 +62,7 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
       });
     });
     e.target.reset();
-    navigate("/private/cardFish");
+    navigate("/private/cardfish");
   };
 
   const closeModals = () => {
@@ -71,7 +73,7 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
     <div className="fixed-container-modals">
       <div onClick={closeModals} className="container-modals"></div>
 
-      <form onSubmit={handleSubmitnewFish} className="welcome-form">
+      <form onSubmit={handleSubmitnewAqua} className="welcome-form">
         {displayName && (
           <>
             <div>
@@ -169,6 +171,7 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
           <>
             <label htmlFor="photo">Ajoutez une photo</label>
             <input type="file" onChange={onFileChange} />
+            {file ? (''):(<div>Merci de choisir une image pour votre aquarium, vous pourrez la modifier plus tard </div>)}
             <div className="container-arrow">
               <span
                 onClick={() => {
@@ -178,19 +181,13 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
               >
                 Revenir en arrière
               </span>
-              <ArrowRightAltIcon
-                sx={customStyleArrow}
-                onClick={() => {
-                  setDisplayPhoto(false);
-                  setDisplayValidation(true);
-                }}
-              />
+             
+              { file && <button className='btn' type="submit">Aller au dashboard</button>}
+             
+              
+
+              
             </div>
-          </>
-        )}
-        {displayValidation && (
-          <>
-            <button type="submit">Merci et Bonne découverte </button>
           </>
         )}
       </form>

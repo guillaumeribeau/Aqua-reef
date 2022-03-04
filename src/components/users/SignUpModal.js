@@ -9,7 +9,7 @@ import WelcomeModals from "../welcome/WelcomeModals";
 export default function SignUpModal() {
   const { modalState, toggleModals, signUp } = useContext(UserContext);
   const { currentUser } = useContext(UserContext);
-  const [displayWelcomeModals,setDiplayWelcomeModals]=useState(false)
+  const [displayWelcomeModals, setDiplayWelcomeModals] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,40 +33,37 @@ export default function SignUpModal() {
       setValidation("6 characters min");
       return;
     } else if (inputs.current[2].value !== inputs.current[3].value) {
-      setValidation("Passwords do not match");
+      setValidation("les mots de passe ne sont pas identiques");
       return;
     }
     // on utilise la methode signup definit dans notre userContext avec les champs remplis dans le signup
-    try {
-      const cred = await signUp(
-        inputs.current[0].value,
-        inputs.current[1].value,
-        inputs.current[2].value
-      );
-       console.log(cred);
-      toggleModals("close");
-      setDiplayWelcomeModals(true)
- 
-    } catch (err) {
-      if (err.code === "auth/invalid-email") {
-        setValidation("Email format invalid");
-      }
 
-      if (err.code === "auth/email-already-in-use") {
-        setValidation("Email already used");
-      }
+    const cred = await signUp(
+      inputs.current[0].value,
+      inputs.current[1].value,
+      inputs.current[2].value
+    );
+
+    if (cred && cred.code === "auth/email-already-in-use") {
+      setValidation("Email déjà utilisé");
+      return;
     }
+
+    toggleModals("close");
+    setDiplayWelcomeModals(true);
   };
+
   // ferme la modale et remet les forms à zéro
   const closeModal = () => {
     setValidation("");
     toggleModals("close");
   };
 
-
   return (
     <>
-    {displayWelcomeModals && <WelcomeModals setDiplayWelcomeModals={setDiplayWelcomeModals}/>}
+      {displayWelcomeModals && (
+        <WelcomeModals setDiplayWelcomeModals={setDiplayWelcomeModals} />
+      )}
       {modalState.signUpModal && (
         <div className="fixed-container-modals">
           <div onClick={closeModal} className="container-modals"></div>

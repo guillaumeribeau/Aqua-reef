@@ -74,17 +74,12 @@
 .mobile {
   background-color: $background-navigation-dashboard;
   width: 0px;
- height: 60vh;
-  margin-top: 10px;
-  border-radius: 20px;
-  margin: 10px 30px 10px 30px;
+  height: 90vh;
+  border-radius: 0px 20px 20px 0;
   position: absolute;
-  top: 25px;
+  top: 10vh;
   left: 0px;
-
-  margin-top: 10px;
-  border-radius: 20px;
-  margin: 0;
+  margin: 0 0 15px 0;
   animation: menuNav both 1s ease;
 }
 @keyframes menuNav {
@@ -100,7 +95,23 @@
   .dashboard-navigation {
     display: none;
   }
- .header-dashboard{
-   height: 150px;
- }
+  .header-dashboard {
+    height: 23vh;
+  }
+
+  .title-header-dashboard {
+    height: 7vh;
+  }
+  .nav-dashboard {
+    height: 50vh;
+    margin-left: 45px;
+    margin-top: 50px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .legend-header-dashboard {
+    height: 10vh;
+    margin-left: 45px;
+  }
 }

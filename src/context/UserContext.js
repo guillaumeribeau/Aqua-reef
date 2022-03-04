@@ -13,21 +13,17 @@ export const UserContextProvider = ({ children }) => {
   // s'inscrire méhode firebase 9
   const signUp = async (email, pseudo, pwd) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, pwd).catch((err) =>
-        console.log(err)
-      );
+      await createUserWithEmailAndPassword(auth, email, pwd);
 
-      await updateProfile(auth.currentUser, { displayName: pseudo }).catch(
-        (err) => console.log(err)
-      );
+      await updateProfile(auth.currentUser, { displayName: pseudo });
     } catch (err) {
-      console.log(err);
+     
+    return err
     }
   };
   // s'identifier methode firebase 9
   const signIn = (email, pwd) => {
-    signInWithEmailAndPassword(auth, email, pwd)
-  
+    signInWithEmailAndPassword(auth, email, pwd);
   };
 
   const [currentUser, setCurrentUser] = useState(null);
@@ -71,22 +67,28 @@ export const UserContextProvider = ({ children }) => {
 
   // context du menu mobile
   const [mobile, setMobile] = useState({
-    hamburger:false,
-    display:false,
+    hamburger: false,
+    display: false,
   });
 
   useEffect(() => {
     if (window.innerWidth < 1000) {
       console.log("1000px ok ");
-      setMobile({...mobile,hamburger:!mobile.hamburger});
+      setMobile({ ...mobile, hamburger: !mobile.hamburger });
     }
   }, []);
 
-
-
   return (
     <UserContext.Provider
-      value={{ modalState, toggleModals, currentUser, signUp, signIn,mobile,setMobile }}
+      value={{
+        modalState,
+        toggleModals,
+        currentUser,
+        signUp,
+        signIn,
+        mobile,
+        setMobile,
+      }}
     >
       {!loadingData && children}
     </UserContext.Provider>

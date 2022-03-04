@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CardFish from "./CardFish";
 
 import { v4 as uuidv4 } from "uuid";
@@ -17,7 +17,7 @@ const AllCardFish = () => {
   const [newCardFish, setNewCardFish] = useState([]);
   const [displayForms, setDisplayForms] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  
+  const inputSearch= useRef()
 
   const [rangeValue, setRangeValue] = useState(6);
   const [selectedRadio, setSelectedRadio] = useState("");
@@ -89,11 +89,16 @@ const searchByInput = (e) => {
       </div>
       <div className="search-card-fish">
 <label htmlFor="search">Recherche fiches poissons</label>
-<input onChange={searchByInput} type="text" name="search" id="search" />
+<input ref={inputSearch} onChange={searchByInput} type="text" name="search" id="search" />
 </div>
       <div className="cancel">
         {selectedRadio && (
-          <button onClick={() => setSelectedRadio("")}>
+          <button onClick={() =>{
+            setSelectedRadio("")
+            setSearchInput('')
+            inputSearch.current.value=''
+          } }>
+            
             Annuler les filtres
           </button>
         )}

@@ -35,10 +35,10 @@ export default function SignInModal() {
       );
       setValidation("");
       toggleModals("close");
-      navigate("/private/analyse");
+      navigate("/private/cardfish");
     } catch (error) {
       console.log(error);
-      setValidation("Wopsy, email and/or password incorrect");
+      setValidation("votre mail ou password est invalide");
     }
   };
 
