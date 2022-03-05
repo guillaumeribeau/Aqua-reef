@@ -46,7 +46,7 @@ const AquaSettings = () => {
     const unsub = onSnapshot(
       doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"),
       (doc) => {
-        console.log("Current data: ", doc.data());
+     
         setInfosAqua(doc.data());
       }
     );
@@ -54,7 +54,7 @@ const AquaSettings = () => {
     return unsub;
   }, []);
 
-  console.log(infosAqua);
+
   const refAquaInfos = doc(
     db,
     "users",
@@ -88,28 +88,23 @@ const updateType= async()=>{
 }
 
   return (
-    <>
-      <Navigation />
-      <div className="title-edit-aqua">
-        <h2>Modification général de mon aquarium</h2>
-      </div>
+    <div>
+
+      
       <div className="container-infos-aqua-edit">
         {edit.name ? (
           <div>
           <h3>Nom de votre aquarium</h3>
           <div className="container-edit-aqua">
             <input type="text" ref={nameRef} defaultValue={infosAqua.name} />
-            <CheckIcon
-              onClick={updateName}
-              sx={{ cursor: "pointer" }}
-            />
+          <button onClick={updateName}>Valider</button>
           </div>
           </div>
         ) : (
           <>
             <h3>Nom de votre aquarium</h3>
             <div className="container-edit-aqua">
-            <h3>{infosAqua.name}</h3>
+            <h4>{infosAqua.name}</h4>
 
             <button
               onClick={() => setEdit({ ...edit, name: true })}
@@ -128,17 +123,14 @@ const updateType= async()=>{
               ref={volumeRef}
               defaultValue={infosAqua.Volume}
             />
-            <CheckIcon
-              onClick={updateVolume}
-              sx={{ cursor: "pointer" }}
-            />
+           <button onClick={updateVolume}>Valider</button>
           </div>
           </div>
         ) : (
           <>
             <h3>Volume de votre aquarium</h3>
             <div className="container-edit-aqua">
-            <h3>{infosAqua.volume}</h3>
+            <h4>{infosAqua.volume}</h4>
 
             <button
               onClick={() => setEdit({ ...edit, volume: true })}
@@ -172,7 +164,7 @@ const updateType= async()=>{
          <Addphoto StorageUrl={`${currentUser.uid}/images/aquarium`} RegisterUrlInFireStore={`users/${currentUser.uid}/aquarium/infos-aqua`}/> 
          </div>
       </div>
-    </>
+    </div>
   );
 };
 

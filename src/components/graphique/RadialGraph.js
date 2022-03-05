@@ -14,7 +14,7 @@ const RadialGraph = ({ dataRangeBudget }) => {
 
   return (
     <div className="radar_score_container">
-      <h3>indicateur de gestion de votre population</h3>
+      <h3>Indicateur de gestion de votre population</h3>
  
         <PieChart width={250} height={180}>
           <Pie

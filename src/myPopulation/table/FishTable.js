@@ -30,16 +30,13 @@ export const FishTable = ({ tableData, removeRowFish,displayCardFishDetails }) =
         Header: "Taille",
         accessor: "size",
       },
-      {
-        Header: "Longévité",
-        accessor: "longevity",
-      },
+  
       {
         Header: "Image",
         accessor: "url",
         maxWidth: 70,
         minWidth: 70,
-        Cell: ({ cell: { value } }) => <img src={value} width={60} />,
+        Cell: ({ cell: { value } }) => <img src={value} width={50} />,
       },
       {
         Header: "Supprimer",
@@ -50,8 +47,8 @@ export const FishTable = ({ tableData, removeRowFish,displayCardFishDetails }) =
           <DeleteIcon
             onClick={() => removeRowFish(value)}
             sx={{
-              fontSize: "40px",
-              marginRight: "5px",
+              fontSize: "30px",
+            
               cursor: "pointer",
               "&:hover": {
                 color: "blue",
@@ -59,7 +56,7 @@ export const FishTable = ({ tableData, removeRowFish,displayCardFishDetails }) =
               },
             }}
           />
-          <span onClick={()=> displayCardFishDetails(value)}>Détails</span>
+        
           </div>
         ),
       },

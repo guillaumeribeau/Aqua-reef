@@ -90,73 +90,31 @@ const MyPopulation = () => {
   const resultPercentage = resultPercentageBugdet();
 
   // delete row fish in tableFish
-  const removeRowFish=(id)=>{
+  const removeRowFish = (id) => {
     deleteDoc(doc(db, "users", currentUser.uid, "MyPopulation", id));
-}
+  };
 
-const displayCardFishDetails = (id) => {
-const cardFishFiltered= population.filter((card)=> id === card.id)
-setOneCardDisplay({...oneCardDisplay, cardFishFiltered }) 
+  const displayCardFishDetails = (id) => {
+    const cardFishFiltered = population.filter((card) => id === card.id);
+    setOneCardDisplay({ ...oneCardDisplay, cardFishFiltered });
+  };
 
-
-}
-
-console.log(oneCardDisplay);
-    
- 
+  console.log(oneCardDisplay);
 
   return (
-    <div className="container-population">
-      <div className="population">
-        <div className="container-infos-aqua">
-          <h3>Votre aquarium fait {volumeAqua} L</h3>
-          <RadialGraph dataRangeBudget={resultPercentage} />
-          {totalSizeFish > volumeAqua && (
-            <div>VOUS AVEZ DEPASSER LA POPULATION !!</div>
-          )}
-        </div>
-        <div className="container-table">
-         {/* {oneCardDisplay && oneCardDisplay[0].map((card) => {
-            return (
-              <CardFish
-                card={card}
-                key={card.id}
-                id={card.id}
-                name={card.name}
-                latin={card.latin}
-                photo={card.url}
-                alt={card.alt}
-                longevity={card.longevity}
-                volume={card.volume}
-                description={card.description}
-                addFishText={false}
-                size={card.size}
-              />
-            );
-          })} */}
-          <FishTable tableData={population} removeRowFish={removeRowFish} displayCardFishDetails={displayCardFishDetails}/>
-        </div>
-        <div className="container-card-fish">
-          {population.map((card) => {
-            return (
-              <CardFish
-                card={card}
-                key={card.id}
-                id={card.id}
-                name={card.name}
-                latin={card.latin}
-                photo={card.url}
-                alt={card.alt}
-                longevity={card.longevity}
-                volume={card.volume}
-                description={card.description}
-                addFishText={false}
-                size={card.size}
-              />
-            );
-          })}
-        </div>
+    <div className="population">
+      <div className="container-infos-aqua">
+        <RadialGraph dataRangeBudget={resultPercentage} />
+        {totalSizeFish > volumeAqua && (
+          <div>VOUS AVEZ DEPASSER LA POPULATION !!</div>
+        )}
       </div>
+
+      <FishTable
+        tableData={population}
+        removeRowFish={removeRowFish}
+        displayCardFishDetails={displayCardFishDetails}
+      />
     </div>
   );
 };

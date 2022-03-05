@@ -110,10 +110,8 @@ export default function UserMenu() {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem onClick={acessToDashBoard}>DashBoard</MenuItem>
-                      <MenuItem onClick={handleClose}>Mon compte</MenuItem>
-                      <MenuItem onClick={acessToSettings}>Paramètres Aquarium</MenuItem>
-                      <MenuItem onClick={logOut}>se déconnecter</MenuItem>
+                  
+                      <MenuItem onClick={logOut}>Déconnexion</MenuItem>
                       
                     </MenuList>
                   </ClickAwayListener>

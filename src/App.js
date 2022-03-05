@@ -51,7 +51,7 @@ function App() {
           <Route path="/private/mypopulation" element={<DashboardDefault childrenCards={<MyPopulation/>} />} />
     
           
-          <Route path="/private/aqua-settings" element={<AquaSettings/>} />
+          <Route path="/private/aqua-settings" element={<DashboardDefault childrenCards={<AquaSettings/>} />} />
 
 
           <Route path="/private/blog" element={<Blog />} />

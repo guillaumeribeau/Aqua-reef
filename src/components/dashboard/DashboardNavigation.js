@@ -5,7 +5,7 @@ import InsightsIcon from "@mui/icons-material/Insights";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import SaveIcon from "@mui/icons-material/Save";
-
+import SettingsIcon from '@mui/icons-material/Settings';
 import { UserContext } from "../../context/UserContext";
 import {
   collection,
@@ -131,7 +131,17 @@ const DashboardNavigation = () => {
                 activeClassName="active-link-nav-dashboard"
                 to="/private/setupRegister"
               >
-                Mes Setups Enregistrer
+                Mes setups enregistrer
+              </Link>
+            </div>
+            <div className="link-nav">
+              <SettingsIcon />
+              <Link
+                className="link-nav-dashboard"
+                activeClassName="active-link-nav-dashboard"
+                to="/private/aqua-settings"
+              >
+                Réglages aquarium
               </Link>
             </div>
           </nav>

@@ -45,6 +45,11 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
+.title-aqua{
+color: $blue-color;
+font-weight: 900;
+}
+
 
 .header-dashboard {
   background-color: $background-navigation-dashboard;
@@ -61,14 +66,15 @@
 }
 
 .legend-header-dashboard {
+
   @extend %centerColumns;
-  width: 80%;
+
   height: auto;
   border-radius: 15px;
   background: #9ca3aa;
   box-shadow: inset 33px 33px 28px #969ca3, inset -33px -33px 28px #a2aab1;
   padding: 10px;
-  margin: 20px 10% 30px 10%;
+ margin: 5px;
 }
 
 .mobile {
@@ -80,7 +86,7 @@
   top: 10vh;
   left: 0px;
   margin: 0 0 15px 0;
-  animation: menuNav both 1s ease;
+  animation: menuNav both 0.6s ease;
 }
 @keyframes menuNav {
   from {
@@ -103,15 +109,12 @@
     height: 7vh;
   }
   .nav-dashboard {
-    height: 50vh;
-    margin-left: 45px;
-    margin-top: 50px;
+
+    margin-left: 15px;
+    margin-top: 15px;
     align-items: flex-start;
     justify-content: flex-start;
   }
 
-  .legend-header-dashboard {
-    height: 10vh;
-    margin-left: 45px;
-  }
+
 }

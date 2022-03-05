@@ -19,7 +19,7 @@ const AllCardFish = () => {
   const [searchInput, setSearchInput] = useState('');
   const inputSearch= useRef()
 
-  const [rangeValue, setRangeValue] = useState(6);
+  const [rangeValue, setRangeValue] = useState(20);
   const [selectedRadio, setSelectedRadio] = useState("");
   const radios = ["100L", "150L", "300L", "500L"];
  
@@ -41,7 +41,7 @@ const AllCardFish = () => {
  
 
 const loadMore = () => {
-  setRangeValue(rangeValue + 3);
+  setRangeValue(rangeValue + 10);
 }
 const searchByInput = (e) => {
   setSearchInput(e.target.value.toLowerCase())
