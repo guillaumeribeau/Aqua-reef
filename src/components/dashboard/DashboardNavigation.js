@@ -35,7 +35,7 @@ const DashboardNavigation = () => {
     const unsub = onSnapshot(
       doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"),
       (doc) => {
-        console.log("Current data: ", doc.data());
+   
         setInfosAqua(doc.data());
       }
     );
@@ -121,7 +121,7 @@ const DashboardNavigation = () => {
                 activeClassName="active-link-nav-dashboard"
                 to="/private/createSetup"
               >
-                Ajoutez un aquarium
+                Créer un setup
               </Link>
             </div>
             <div className="link-nav">

@@ -16,19 +16,10 @@ const ImageEquipements = ({
   aquaBoard,
   setAquaBoard,
   picture,
-  putEquipementInAquaBoard,
-  nameEquipement,
-  setNameEquipement,
-  priceEquipement,
-  setPriceEquipement,
 }) => {
   const [deleteIconVisible, setDeleteIconVisible] = useState(IconDelete);
 
-  const [editToggleName, setEditToggleName] = useState(true);
-  const [editTogglePrice, setEditTogglePrice] = useState(true);
-  const inputNameEquipement = useRef();
-  const inputPriceEquipement = useRef();
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, mobile } = useContext(UserContext);
 
   // fonction drag
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -39,80 +30,30 @@ const ImageEquipements = ({
     }),
   }));
 
-  const toggleName = () => {
-    setEditToggleName(!editToggleName);
-  };
-  const togglePrice = () => {
-    setEditTogglePrice(!editTogglePrice);
-  };
-
   const deleteEquipementOnBoard = () => {
     console.log(aquaBoard);
     setAquaBoard(aquaBoard.filter((el) => el.id !== picture.id));
   };
 
-  const registerNameEquipement = (e) => {
-    e.preventDefault();
-    setNameEquipement(inputNameEquipement.current.value);
-    setEditToggleName(false);
+  //pour version mobile
+  const addImageToAquaBoard = () => {
+    if (mobile.hamburger) {
+      const pictureList = listOfImageEquipements.filter(
+        (picture) => id === picture.id
+      );
+      console.log(pictureList);
+      setAquaBoard((board) => [...board, pictureList[0]]);
+    }
   };
-  const registerPriceEquipement = (e) => {
-    e.preventDefault();
-    setPriceEquipement(inputPriceEquipement.current.value);
-    setEditTogglePrice(false);
-  };
-
-  const logiqueInputDisplay = (
-    <>
-      <div className="container-input-equipement">
-        {editToggleName ? (
-          <>
-            <input
-              ref={inputNameEquipement}
-              className="input-title-equipement"
-              placeholder="réference de l'équipement"
-            />
-            <CheckIcon
-              onClick={registerNameEquipement}
-              sx={{ cursor: "pointer" }}
-            />
-          </>
-        ) : (
-          <>
-            <span>{nameEquipement}</span>
-            <EditIcon onClick={toggleName} sx={{ cursor: "pointer" }} />
-          </>
-        )}
-      </div>
-      <div className="container-input-equipement">
-        {editTogglePrice ? (
-          <>
-            <input
-              ref={inputPriceEquipement}
-              className="input-price-equipement"
-              placeholder="prix en euros"
-            />
-            <CheckIcon
-              onClick={registerPriceEquipement}
-              sx={{ cursor: "pointer" }}
-            />
-          </>
-        ) : (
-          <>
-            <span>{priceEquipement}</span>
-            <EditIcon onClick={togglePrice} sx={{ cursor: "pointer" }} />
-          </>
-        )}
-      </div>
-    </>
-  );
 
   return (
     <>
       {deleteIconVisible ? (
         <div
           ref={drag}
-          className="image-equipement"
+          className={
+            mobile.hamburger ? "mobile-image-equipement" : "image-equipement"
+          }
           style={{ border: isDragging ? "3px solid blue" : "" }}
         >
           <div className="container-delete">
@@ -128,15 +69,19 @@ const ImageEquipements = ({
             />
           </div>
           <img src={src} alt={alt} />
-          {logiqueInputDisplay}
         </div>
       ) : (
         <div
           ref={drag}
-          className="image-equipement"
+          onClick={addImageToAquaBoard}
+          className={
+            mobile.hamburger ? "mobile-image-equipement" : "image-equipement"
+          }
           style={{ border: isDragging ? "3px solid blue" : "" }}
         >
-          <span>{title}</span>
+          <div className="container-delete">
+            <span>{title}</span>
+          </div>
           <img src={src} alt={alt} />
         </div>
       )}

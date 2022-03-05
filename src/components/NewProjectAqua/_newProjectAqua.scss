@@ -20,9 +20,10 @@
 }
 .image-equipement {
   @extend %centerColumns;
-  margin: 3px;
-  width: 100px;
-  height: 100px;
+  margin: 5px;
+  padding: 10px;
+  width: 120px;
+  height: 120px;
   border-radius: 20px;
   background: #c9f0f8;
   box-shadow: 20px 20px 60px #abccd3, -20px -20px 60px #e7ffff;

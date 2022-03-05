@@ -18,19 +18,22 @@ export const FishTable = ({ tableData, removeRowFish,displayCardFishDetails }) =
         Header: "Noms communs",
         accessor: "name",
       },
-      {
-        Header: "noms Latin",
-        accessor: "latin",
-      },
-      {
-        Header: "Volume",
-        accessor: "volume",
-      },
-      {
-        Header: "Taille",
-        accessor: "size",
-      },
-  
+      // {
+      //   Header: "noms Latin",
+      //   accessor: "latin",
+      // },
+      // {
+      //   Header: "Volume",
+      //   accessor: "volume",
+      // },
+      // {
+      //   Header: "Taille",
+      //   accessor: "size",
+      // },
+      // {
+      //   Header: "Longévité",
+      //   accessor: "longevity",
+      // },
       {
         Header: "Image",
         accessor: "url",

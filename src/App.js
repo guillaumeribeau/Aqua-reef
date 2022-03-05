@@ -7,7 +7,7 @@ import Contact from "./pages/Contact";
 import AnalyseWater from "./pages/AnalyseWater";
 import DashboardDefault from "./pages/DashboardDefault";
 import Private from "./components/users/Privates";
-import NewProjectAqua from "./components/NewProjectAqua";
+import NewProjectAqua from "./components/NewProjectAqua/NewProjectAqua";
 import Setup from "./components/Setup/Setup";
 import Population from "./allCardFish/AllCardFish";
 import AllCardFish from "./allCardFish/AllCardFish";

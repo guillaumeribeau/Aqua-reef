@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .change_pagination {
@@ -12,11 +12,11 @@
 .container_button_pagination {
   display: flex;
   align-items: center;
+ 
 }
 .button_pagination {
   padding: 10px;
-
-  background: $blue-color;
+background: $blue-color;
   color: $white-color;
   border-color: $black-color;
   cursor: pointer;
@@ -57,6 +57,7 @@
   }
   .button_pagination {
     margin-bottom: 15px;
+    margin-bottom: 50px;
   }
 }
 

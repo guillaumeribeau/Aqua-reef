@@ -31,7 +31,7 @@ export const listOfImageEquipements = [
       alt: "exemple pompe doseuse",
     },
     {
-      title: "Pompe de brassage",
+      title: "Brassage",
     
       id: 3,
       src: brassage,

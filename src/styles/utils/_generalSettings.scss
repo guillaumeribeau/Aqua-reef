@@ -11,6 +11,11 @@ body,html {
  font-family: 'lato','sans-serif';
 
 }
+@media (max-width:1000px) {
+  body{
+    overflow-x: hidden;
+  }
+}
 
 a {
   text-decoration: none;
