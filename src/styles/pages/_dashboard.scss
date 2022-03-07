@@ -1,0 +1,33 @@
+.dahboard-home {
+  @extend %centerColumns;
+}
+
+.dashboard-home-title {
+  @extend %centerColumns;
+  width: 80%;
+  border-radius: 50px;
+  background: #d2e3ee;
+  box-shadow: 20px 20px 60px #b3c1ca, -20px -20px 60px #f2ffff;
+  margin-bottom: 50px;
+}
+
+.dashboard-home-population {
+  @extend %centerColumns;
+  width: 80%;
+  margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 50px;
+  background: #dcd7ea;
+  box-shadow: 20px 20px 60px #bbb7c7, -20px -20px 60px #fdf7ff;
+}
+
+
+.dashboard-home-analyse{
+    @extend %centerColumns;
+    width: 80%;
+    margin-bottom: 50px;
+    border-radius: 50px;
+    background: #dce4e0;
+    box-shadow:  20px 20px 60px #bbc2be,
+                 -20px -20px 60px #fdffff;
+}

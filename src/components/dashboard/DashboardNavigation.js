@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import WaterIcon from '@mui/icons-material/Water';
 import SetMealIcon from "@mui/icons-material/SetMeal";
 import InsightsIcon from "@mui/icons-material/Insights";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -88,6 +89,12 @@ const DashboardNavigation = () => {
             </span>
           </div>
           <nav className="nav-dashboard">
+          <div className="link-nav">
+              <WaterIcon />
+              <Link className="link-nav-dashboard" to="/private/dashboard">
+        Mon aquarium
+              </Link>
+            </div>
             <div className="link-nav">
               <InsightsIcon />
               <Link className="link-nav-dashboard" to="/private/analyse">
@@ -101,7 +108,7 @@ const DashboardNavigation = () => {
                 activeClassName="active-link-nav-dashboard"
                 to="/private/cardFish"
               >
-                Les fiches poissons
+               Ajouter des poissons
               </Link>
             </div>
             <div className="link-nav">

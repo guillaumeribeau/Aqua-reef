@@ -99,7 +99,7 @@ const MyPopulation = () => {
     setOneCardDisplay({ ...oneCardDisplay, cardFishFiltered });
   };
 
-  console.log(oneCardDisplay);
+  
 
   return (
     <div className="population">

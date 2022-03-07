@@ -13,6 +13,7 @@ import Population from "./allCardFish/AllCardFish";
 import AllCardFish from "./allCardFish/AllCardFish";
 import MyPopulation from "./myPopulation/MyPopulation";
 import AquaSettings from "./components/setting/AquaSettings";
+import Dashboard from "./pages/Dashboard";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
           <Route
             path="/private/dashboard"
             index
-            element={<DashboardDefault />}
+            element={<DashboardDefault childrenCards={<Dashboard/>} />}
           />
 
           <Route

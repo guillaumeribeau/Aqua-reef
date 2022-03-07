@@ -57,6 +57,7 @@
 // display a last measure
 .container-results-measure {
   background-color: $white-color;
+  min-width: 300px;
   width: 30%;
   height: 491px;
   margin-right: 200px;
@@ -74,7 +75,14 @@
     margin-top: 10px;
     color:blue;
   }
+
 }
+.container-results-measure.no-background{
+  background: none;
+  box-shadow: none;
+}
+
+
 .first-measure {
   margin-right: 70px;
 }
