@@ -1,8 +1,7 @@
 .container_pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 50px;
+  @extend %centerRows;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .change_pagination {
@@ -12,25 +11,29 @@
 .container_button_pagination {
   display: flex;
   align-items: center;
- 
+  margin-right: 20px;
 }
 .button_pagination {
-  padding: 10px;
-background: $blue-color;
+  padding: 5px;
+  background: $blue-color;
+  border-radius: 10px;
   color: $white-color;
-  border-color: $black-color;
+  border-color: transparent;
   cursor: pointer;
   margin-right: 10px;
+  &:hover {
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.36);
+  }
 }
 
 .container_input_pagination {
   display: flex;
   align-items: center;
-  color: $black-color;
+
   select {
     margin-left: 15px;
-    background-color: blanchedalmond;
-
+    background-color: $blue-color;
+    color: $white-color;
     height: 35px;
     padding: 5px;
     border: 2px solid #ccc;
@@ -39,7 +42,8 @@ background: $blue-color;
 }
 
 .input_pagination {
-  background-color: blanchedalmond;
+  background-color: $blue-color;
+  color: $white-color;
   margin-left: 15px;
   height: 35px;
   padding: 5px;

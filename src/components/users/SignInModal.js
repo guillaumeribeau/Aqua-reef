@@ -35,7 +35,7 @@ export default function SignInModal() {
       );
       setValidation("");
       toggleModals("close");
-      navigate("/private/cardfish");
+      navigate("/private/dashboard");
     } catch (error) {
       console.log(error);
       setValidation("votre mail ou password est invalide");

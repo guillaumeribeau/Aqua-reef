@@ -1,0 +1,15 @@
+.legend-header-dashboard {
+    @extend %centerColumns;
+    height: auto;
+    border-radius: 15px;
+    background: #9ca3aa;
+    box-shadow: inset 33px 33px 28px #969ca3, inset -33px -33px 28px #a2aab1;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .legend-header-dashboard.bg-color{
+    background: transparent;
+    box-shadow:none ;
+    width: 70%;
+  }

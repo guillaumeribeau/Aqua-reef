@@ -62,7 +62,7 @@ const WelcomeModals = ({ setDiplayWelcomeModals }) => {
       });
     });
     e.target.reset();
-    navigate("/private/cardfish");
+    navigate("/private/dashboard");
   };
 
   const closeModals = () => {

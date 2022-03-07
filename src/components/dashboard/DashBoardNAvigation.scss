@@ -45,11 +45,10 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-.title-aqua{
-color: $blue-color;
-font-weight: 900;
+.title-aqua {
+  color: $blue-color;
+  font-weight: 900;
 }
-
 
 .header-dashboard {
   background-color: $background-navigation-dashboard;
@@ -65,17 +64,7 @@ font-weight: 900;
   }
 }
 
-.legend-header-dashboard {
 
-  @extend %centerColumns;
-
-  height: auto;
-  border-radius: 15px;
-  background: #9ca3aa;
-  box-shadow: inset 33px 33px 28px #969ca3, inset -33px -33px 28px #a2aab1;
-  padding: 10px;
- margin: 5px;
-}
 
 .mobile {
   background-color: $background-navigation-dashboard;
@@ -109,12 +98,9 @@ font-weight: 900;
     height: 7vh;
   }
   .nav-dashboard {
-
     margin-left: 15px;
     margin-top: 15px;
     align-items: flex-start;
     justify-content: flex-start;
   }
-
-
 }

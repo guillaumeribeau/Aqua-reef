@@ -19,15 +19,10 @@ const MobileProjectAqua = () => {
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
 
- 
-
   // register setup in firebase
 
   const registerSetup = async () => {
     if (aquaBoard.length >= 1) {
-      if (error) {
-        setError(false);
-      }
       setLoader(true);
       const docRef = await addDoc(
         collection(db, "users", currentUser.uid, "setup"),
@@ -44,7 +39,9 @@ const MobileProjectAqua = () => {
         setIsRegister(false);
       }, 2000);
     } else {
+      setIsRegister(true);
       setError(true);
+      console.log("error");
       setUserMessage("vous devez mettre au moins un équipement !");
     }
   };
@@ -55,60 +52,65 @@ const MobileProjectAqua = () => {
     setIsRegister(false);
   };
   return (
-    <>
-      <div className="mobile-project">
-        <div className="mobile-project-equipement">
-          {listOfImageEquipements.map((picture) => {
-            return (
-              <ImageEquipements
-                alt={picture.alt}
-                key={picture.id}
-                src={picture.src}
-                title={picture.title}
-                IconDelete={false}
-                id={picture.id}
-                picture={picture}
-                setAquaBoard={setAquaBoard}
-              />
-            );
-          })}
-        </div>
-
-        <div className="mobile-project-board">
-        
-           {aquaBoard.map((picture) => {
-            return (
-              <ImageEquipements
-                alt={picture.alt}
-                key={picture.id}
-                id={picture.id}
-                src={picture.src}
-                title={picture.title}
-                IconDelete={true}
-                aquaBoard={aquaBoard}
-                setAquaBoard={setAquaBoard}
-               picture={picture}
-            
-              />
-            );
-          })}
-
-          
-        <button className='btn btn-mobile-register-setup' onClick={registerSetup} >
-          Enregistrer mon setup
-        </button>
-        </div>
-        {loader && <LoaderPoint />}
-        {isRegister && (
-          <div className={error ? "setup-register-error" : "setup-register-ok"}>
-            {error && <span onClick={closeErrorMessage}>close</span>}
-            {userMessage}
-          </div>
-        )}
- 
-      
+   <>
+      <div className="mobile-project-equipement">
+        <h2>Choix d'équipements</h2>
+        <h4>Cliquez sur l'équipement de votre choix</h4>
+        <div className="project-mobile">
+        {listOfImageEquipements.map((picture) => {
+          return (
+            <ImageEquipements
+              alt={picture.alt}
+              key={picture.id}
+              src={picture.src}
+              title={picture.title}
+              IconDelete={false}
+              id={picture.id}
+              picture={picture}
+              setAquaBoard={setAquaBoard}
+            />
+          );
+        })}
       </div>
+</div>
+      <div className="mobile-project-board">
      
+          <div className="image-project-board">
+            {aquaBoard.map((picture) => {
+              return (
+                <ImageEquipements
+                  alt={picture.alt}
+                  key={picture.id}
+                  id={picture.id}
+                  src={picture.src}
+                  title={picture.title}
+                  IconDelete={true}
+                  aquaBoard={aquaBoard}
+                  setAquaBoard={setAquaBoard}
+                  picture={picture}
+                />
+              );
+            })}
+          </div>
+          <div className="container-register-mobile-btn">
+            <button
+              className="btn "
+              onClick={registerSetup}
+            >
+              Enregistrer mon setup
+            </button>
+            {loader && <LoaderPoint />}
+            {isRegister && (
+              <div
+                className={error ? "setup-register-error" : "setup-register-ok"}
+              >
+                {error && <span onClick={closeErrorMessage}>close</span>}
+                {userMessage}
+              </div>
+            )}
+          </div>
+    </div>
+
     </>
   );
 };

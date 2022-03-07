@@ -68,7 +68,7 @@ export const FishTable = ({ tableData, removeRowFish,displayCardFishDetails }) =
   }, [tableData]);
 
   const tableinstance = useTable(
-    { columns, data, initialState: { pageIndex: 0, pageSize: 5 } },
+    { columns, data, initialState: { pageIndex: 0, pageSize: 20 } },
     useGlobalFilter,
     useSortBy,
     usePagination

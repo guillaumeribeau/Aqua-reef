@@ -21,13 +21,14 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
+import InfosAqua from "./InfosAqua";
 /**
  * dashboard naviagation
  * @components
  */
 
 const DashboardNavigation = () => {
-  const [infosAqua, setInfosAqua] = useState([]);
+  const [image, setImage] = useState([]);
   const { currentUser, mobile, setMobile } = useContext(UserContext);
 
   // useEffect for Main picture
@@ -37,7 +38,7 @@ const DashboardNavigation = () => {
       doc(db, "users", currentUser.uid, "aquarium", "infos-aqua"),
       (doc) => {
    
-        setInfosAqua(doc.data());
+        setImage(doc.data());
       }
     );
 
@@ -75,19 +76,12 @@ const DashboardNavigation = () => {
           </div>
           <div className="header-dashboard">
             <img
-              src={infosAqua && infosAqua.url}
+              src={image && image.url}
               alt="logo de aqua gest reef"
             />
           </div>
 
-          <div className="legend-header-dashboard">
-            Votre Aquarium
-            <span className="title-aqua">{infosAqua && infosAqua.name}</span>
-            <span className="title-aqua">{infosAqua && infosAqua.volume}L</span>
-            <span className="title-aqua">
-              {infosAqua && infosAqua.selectedRadio}
-            </span>
-          </div>
+          <InfosAqua bgcolor={false}/>
           <nav className="nav-dashboard">
           <div className="link-nav">
               <WaterIcon />

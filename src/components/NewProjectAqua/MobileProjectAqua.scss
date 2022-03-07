@@ -1,56 +1,81 @@
-.mobile-project{
-@extend %centerRows;
-justify-content: space-between;
-align-items: flex-start;
-height: 100vh;
-}
 
-.mobile-project-equipement{
-    @extend %centerRows;
-    flex-wrap: wrap;
-width: 40%;
 
-height: 90vh;
-background:$background-navigation-dashboard;
-margin-right: 50px;
-}
-.mobile-image-equipement{
-   @extend %centerColumns;
-    margin: 5px;
-    padding: 10px;
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    background: #c9f0f8;
-    box-shadow: 20px 20px 60px #abccd3, -10px -10px 40px #e7ffff;
-  
-    span {
-      color: $black-color;
-      font-size: 15px;
-      font-weight: 700;
-    }
-    img {
-        margin-right: 15px;
-        max-width: 50px;
-        height: 50px;
-        cursor: pointer;
-      }
-}
-.mobile-project-board{
-
-    @extend %centerRows;
-    align-items: flex-start;
-    flex-wrap: wrap;
-padding:15px;
-margin-top: 100px;
+.mobile-project-equipement {
+ @extend %centerColumns;
+position: absolute;
+top:10vh;
+left:0;
+ padding:30px;
  
-    
+ height: auto;
+ background: $background-navigation-dashboard;
+border-radius: 0 0 10px 10px;
+ h4{
+     
+     margin-bottom: 50px;
+ }
 }
-.btn-mobile-register-setup{
+.project-mobile{
 
-    position: absolute;
-        left:50%;
-        top:13vh;
-        transform: translate(-10%,-50%);
-        margin-bottom: 50px;
+    @extend %centerRows;
+    flex-wrap: wrap;
+    height: auto;
+    background: $background-navigation-dashboard;
+   
+}
+.mobile-image-equipement {
+  @extend %centerColumns;
+ 
+  margin: 5px;
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: #c9f0f8;
+  box-shadow: 20px 20px 60px #abccd3, -10px -10px 40px #e7ffff;
+
+  span {
+    color: $black-color;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  img {
+    margin-right: 15px;
+    max-width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+}
+.mobile-project-board {
+  @extend %centerColumns;
+  border-radius: 50px;
+  min-width: 80%;
+   background: #dfdae7;
+    box-shadow: inset -20px 20px 60px #beb9c4,
+                inset 20px -20px 60px #fffbff;
+ 
+  padding: 15px;
+  
+}
+
+
+.image-project-board{
+    @extend %centerRows;
+    flex-wrap: wrap;
+ 
+}
+
+.container-register-mobile-btn{
+
+
+}
+
+
+
+.btn-mobile-register-setup {
+  position: absolute;
+  left: 50%;
+  top: 13vh;
+  transform: translate(-10%, -50%);
+  margin-bottom: 50px;
 }
