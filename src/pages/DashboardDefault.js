@@ -9,16 +9,17 @@ import { UserContext } from "../context/UserContext";
  */
 
 const DashboardDefault = ({ childrenCards }) => {
-  const {mobile}= useContext(UserContext)
+  const {mobile,theme}= useContext(UserContext)
 
   return (
     <>
       <Navigation />
       <div className="dashboard">
         <DashboardNavigation />
-
-        <div className={mobile.display ? "dashboard-main-no-scroll":"dashboard-main"}>{childrenCards}</div>
-      </div>
+{theme === 'dark' ? ( <div className={mobile.display ? "dashboard-main-no-scroll":"dashboard-main dark"}>{childrenCards}</div>
+      ):(<div className={mobile.display ? "dashboard-main-no-scroll":"dashboard-main"}>{childrenCards}</div>
+      )}
+       </div>
     </>
   );
 };

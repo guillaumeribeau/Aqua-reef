@@ -78,6 +78,14 @@ export const UserContextProvider = ({ children }) => {
     }
   }, []);
 
+
+  // theme dark 
+const [theme,setTheme]=useState('light')
+
+
+
+
+
   return (
     <UserContext.Provider
       value={{
@@ -88,6 +96,8 @@ export const UserContextProvider = ({ children }) => {
         signIn,
         mobile,
         setMobile,
+        theme,
+        setTheme
       }}
     >
       {!loadingData && children}

@@ -31,7 +31,7 @@ export default function FormsMeasure () {
  
 
 
-const {currentUser}=useContext(UserContext)
+const {currentUser,theme}=useContext(UserContext)
 console.log(currentUser.uid);
  const date = new Date().toLocaleDateString('fr-Fr',
  { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric' }
@@ -68,9 +68,10 @@ console.log(currentUser.uid);
   };
 
   return (
-    <div className="container-all-measure">
+    
+    <div className={theme ==='dark' ? ("container-all-measure dark"):('container-all-measure')}>
       <h2>Mon relévé de mesures</h2>
-      <div className="container-slider-measure">
+      <div className= { theme=== 'dark' ? ("container-slider-measure dark"):("container-slider-measure")}>
         <div className="first-measure">
           <h3>Température:</h3>
           <Slider

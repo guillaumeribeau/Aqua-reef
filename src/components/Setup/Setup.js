@@ -13,8 +13,9 @@ const Setup = () => {
 
   return (
     <>
+    
       <div className="all-container-setup">
-        
+        <h1>Mes Setups enregistrer</h1>
         <SetupRegister
           openSetup={openSetup}
           setOpenSetup={setOpenSetup}

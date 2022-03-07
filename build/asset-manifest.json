@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.d5938ced.chunk.css",
-    "main.js": "/static/js/main.ff49ff0f.chunk.js",
-    "main.js.map": "/static/js/main.ff49ff0f.chunk.js.map",
+    "main.css": "/static/css/main.0da8be48.chunk.css",
+    "main.js": "/static/js/main.00f2ee86.chunk.js",
+    "main.js.map": "/static/js/main.00f2ee86.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ea929cf5.js",
     "runtime-main.js.map": "/static/js/runtime-main.ea929cf5.js.map",
     "static/js/2.19708b3a.chunk.js": "/static/js/2.19708b3a.chunk.js",
     "static/js/2.19708b3a.chunk.js.map": "/static/js/2.19708b3a.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.d5938ced.chunk.css.map": "/static/css/main.d5938ced.chunk.css.map",
+    "static/css/main.0da8be48.chunk.css.map": "/static/css/main.0da8be48.chunk.css.map",
     "static/js/2.19708b3a.chunk.js.LICENSE.txt": "/static/js/2.19708b3a.chunk.js.LICENSE.txt",
     "static/media/aquariumsetup.b306ae64.png": "/static/media/aquariumsetup.b306ae64.png",
     "static/media/brassage.aca6eecb.png": "/static/media/brassage.aca6eecb.png",
@@ -32,7 +32,7 @@
   "entrypoints": [
     "static/js/runtime-main.ea929cf5.js",
     "static/js/2.19708b3a.chunk.js",
-    "static/css/main.d5938ced.chunk.css",
-    "static/js/main.ff49ff0f.chunk.js"
+    "static/css/main.0da8be48.chunk.css",
+    "static/js/main.00f2ee86.chunk.js"
   ]
 }

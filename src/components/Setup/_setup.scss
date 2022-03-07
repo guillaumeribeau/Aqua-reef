@@ -1,9 +1,13 @@
 .all-container-setup {
   @extend %centerColumns;
+  margin-top: 12vh;
+  align-self: flex-start;
+  h1 {
+    margin-bottom: 50px;
+  }
 }
 
 .setup-register-container {
-
   margin-bottom: 100px;
 }
 .setup-register {
@@ -43,13 +47,12 @@
   flex-wrap: wrap;
 }
 
-.container-btn{
+.container-btn {
   @extend %centerRows;
 }
 
 .btn-close-setup {
   @include btn;
-
 }
 
 .image-equipement {

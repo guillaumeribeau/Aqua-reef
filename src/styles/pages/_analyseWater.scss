@@ -21,7 +21,10 @@
   }
 }
 
-
+.container-all-measure.dark{
+  background: black;
+  color: $white-color;
+}
 
 .container-slider-measure {
   @extend %centerRows;

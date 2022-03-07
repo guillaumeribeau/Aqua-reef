@@ -20,7 +20,7 @@ import LastMeasureResults from "../components/measure/LastMeasureResults";
 
 const Dashboard = () => {
   const [population, setPopulation] = useState([]);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser,theme,setTheme } = useContext(UserContext);
   const [oneCardDisplay, setOneCardDisplay] = useState([]);
 
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboard-home-title">
-
+      <button onClick={()=> setTheme( theme === 'light' ? 'dark':'light')}>theme dark</button>
         <InfosAqua bgcolor={true}/>
         <button
           onClick={() => navigate("/private/aqua-settings")}

@@ -1,81 +1,69 @@
-
-
+.mobile-project{
+@extend %centerColumns;
+justify-content: flex-start;
+}
 .mobile-project-equipement {
- @extend %centerColumns;
-position: absolute;
-top:10vh;
-left:0;
- padding:30px;
- 
- height: auto;
- background: $background-navigation-dashboard;
-border-radius: 0 0 10px 10px;
- h4{
-     
-     margin-bottom: 50px;
- }
-}
-.project-mobile{
-
-    @extend %centerRows;
-    flex-wrap: wrap;
-    height: auto;
-    background: $background-navigation-dashboard;
-   
-}
-.mobile-image-equipement {
   @extend %centerColumns;
- 
-  margin: 5px;
-  padding: 10px;
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
-  background: #c9f0f8;
-  box-shadow: 20px 20px 60px #abccd3, -10px -10px 40px #e7ffff;
-
-  span {
-    color: $black-color;
-    font-size: 15px;
-    font-weight: 700;
-  }
-  img {
-    margin-right: 15px;
-    max-width: 50px;
-    height: 50px;
-    cursor: pointer;
-  }
-}
-.mobile-project-board {
-  @extend %centerColumns;
-  border-radius: 50px;
-  min-width: 80%;
-   background: #dfdae7;
-    box-shadow: inset -20px 20px 60px #beb9c4,
-                inset 20px -20px 60px #fffbff;
- 
-  padding: 15px;
   
+
+  padding: 30px;
+
+  height: auto;
+  background: $background-navigation-dashboard;
+  border-radius: 0 0 10px 10px;
+  h4 {
+    margin-bottom: 50px;
+  }
+}
+.project-mobile {
+  @extend %centerRows;
+  flex-wrap: wrap;
 }
 
 
-.image-project-board{
-    @extend %centerRows;
-    flex-wrap: wrap;
- 
+
+.image-project-board {
+  @extend %centerRows;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  min-height: 250px;
+  min-width: 450px;
+  
+  border-radius: 50px;
+  background: #dfdae7;
+  box-shadow: inset -20px 20px 60px #beb9c4, inset 20px -20px 60px #fffbff;
+padding: 15px;
 }
 
-.container-register-mobile-btn{
-
-
+.btn-project{
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
 
 
 
-.btn-mobile-register-setup {
-  position: absolute;
-  left: 50%;
-  top: 13vh;
-  transform: translate(-10%, -50%);
-  margin-bottom: 50px;
-}
+
+// gestion de l'intérieur des petites cartes.
+.mobile-image-equipement {
+    @extend %centerColumns;
+  
+    margin: 5px;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: #c9f0f8;
+    box-shadow: 20px 20px 60px #abccd3, -10px -10px 40px #e7ffff;
+  
+    span {
+      color: $black-color;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    img {
+      margin-right: 15px;
+      max-width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+  }

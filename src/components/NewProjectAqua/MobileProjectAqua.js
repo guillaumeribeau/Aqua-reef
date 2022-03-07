@@ -10,7 +10,7 @@ import { UserContext } from "../../context/UserContext";
 import { v4 as uuidv4 } from "uuid";
 import LoaderPoint from "../loader/LoaderPoint";
 const MobileProjectAqua = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser,theme,setTheme } = useContext(UserContext);
   const [nameEquipement, setNameEquipement] = useState("");
   const [priceEquipement, setPriceEquipement] = useState("");
   const [aquaBoard, setAquaBoard] = useState([]);
@@ -18,6 +18,7 @@ const MobileProjectAqua = () => {
   const [userMessage, setUserMessage] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
+
 
   // register setup in firebase
 
@@ -52,66 +53,63 @@ const MobileProjectAqua = () => {
     setIsRegister(false);
   };
   return (
-   <>
+    <div className="mobile-project">
+     
       <div className="mobile-project-equipement">
+       
         <h2>Choix d'équipements</h2>
         <h4>Cliquez sur l'équipement de votre choix</h4>
         <div className="project-mobile">
-        {listOfImageEquipements.map((picture) => {
-          return (
-            <ImageEquipements
-              alt={picture.alt}
-              key={picture.id}
-              src={picture.src}
-              title={picture.title}
-              IconDelete={false}
-              id={picture.id}
-              picture={picture}
-              setAquaBoard={setAquaBoard}
-            />
-          );
-        })}
+          {listOfImageEquipements.map((picture) => {
+            return (
+              <ImageEquipements
+                alt={picture.alt}
+                key={picture.id}
+                src={picture.src}
+                title={picture.title}
+                IconDelete={false}
+                id={picture.id}
+                picture={picture}
+                setAquaBoard={setAquaBoard}
+              />
+            );
+          })}
+        </div>
       </div>
-</div>
-      <div className="mobile-project-board">
      
-          <div className="image-project-board">
-            {aquaBoard.map((picture) => {
-              return (
-                <ImageEquipements
-                  alt={picture.alt}
-                  key={picture.id}
-                  id={picture.id}
-                  src={picture.src}
-                  title={picture.title}
-                  IconDelete={true}
-                  aquaBoard={aquaBoard}
-                  setAquaBoard={setAquaBoard}
-                  picture={picture}
-                />
-              );
-            })}
-          </div>
-          <div className="container-register-mobile-btn">
-            <button
-              className="btn "
-              onClick={registerSetup}
+        <div className="image-project-board">
+          {aquaBoard.map((picture) => {
+            return (
+              <ImageEquipements
+                alt={picture.alt}
+                key={picture.id}
+                id={picture.id}
+                src={picture.src}
+                title={picture.title}
+                IconDelete={true}
+                aquaBoard={aquaBoard}
+                setAquaBoard={setAquaBoard}
+                picture={picture}
+              />
+            );
+          })}
+        </div>
+        
+          <button className="btn btn-project " onClick={registerSetup}>
+            Enregistrer mon setup
+          </button>
+          {loader && <LoaderPoint />}
+          {isRegister && (
+            <div
+              className={error ? "setup-register-error" : "setup-register-ok"}
             >
-              Enregistrer mon setup
-            </button>
-            {loader && <LoaderPoint />}
-            {isRegister && (
-              <div
-                className={error ? "setup-register-error" : "setup-register-ok"}
-              >
-                {error && <span onClick={closeErrorMessage}>close</span>}
-                {userMessage}
-              </div>
-            )}
-          </div>
+              {error && <span onClick={closeErrorMessage}>close</span>}
+              {userMessage}
+            </div>
+          )}
+   
+    
     </div>
-
-    </>
   );
 };
 
